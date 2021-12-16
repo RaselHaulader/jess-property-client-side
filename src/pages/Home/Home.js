@@ -12,9 +12,10 @@ const Home = () => {
             <Header></Header>
             <Banner></Banner>
             <Category></Category>
+            <AddedTodays></AddedTodays>
             <AddPropertySection></AddPropertySection>
             <AllProperties></AllProperties>
-            <AddedTodays></AddedTodays>
+
         </div>
     );
 };

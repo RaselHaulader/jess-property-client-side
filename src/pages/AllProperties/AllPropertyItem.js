@@ -18,7 +18,7 @@ const AllPropertyItem = ({ img }) => {
             <div className="card-details">
                 <p style={{ color: "crimson"}}>For sale</p>
                 <h5 className='fw-bold'>Land jashore || 200sqm</h5>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, neque!</p>
+                <p className='my-3'> kazi para, 5 no word, sadar , Jashore, Khulna</p>
                 <h6 style={{ color: "rgba(236, 95, 95, 0.966)", fontWeight: "600" }}>৳ 150000</h6>
                 <hr />
                 <div className="card-footers">

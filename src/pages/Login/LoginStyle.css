@@ -1,0 +1,15 @@
+.form-body input{
+width: 300px;
+padding: 10px;
+border: 1px solid rgba(212, 212, 212, 0.336);
+box-shadow: 6px 6px 44px 14px rgba(161, 157, 157, 0.13);
+border-radius: 10px;
+margin: 5px 0px;
+}
+.form-body input:last-child{
+    background-color: rgb(238, 59, 95);
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+}

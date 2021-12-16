@@ -15,7 +15,7 @@ const AddedTodaysItems = ({ img }) => {
                     <p className=' m-1'><small><i className="fas fa-map-marker-alt"></i> Location dhaka bangladesh plasure</small></p>
                 </div>
                 <div className='todaysAdded-btn'>
-                    <button className='bg-transparent text-light fw-bold border-0'>From $322 </button> <i className="far fa-heart"></i>
+                    <button className='bg-transparent text-light fw-bold border-0'>Price $322 </button> <i className="far fa-heart"></i>
                 </div>
             </div>
         </div>

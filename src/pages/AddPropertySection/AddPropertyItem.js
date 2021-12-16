@@ -5,8 +5,8 @@ const AddPropertyItem = ({title,info,img,btn}) => {
         <div>
              <div className="cardItem">
                     <img src={img} alt=""/>
-                    <h2>{title}</h2>
-                    <p>{info}</p>
+                    <h4>{title}</h4>
+                    <p className='my-4'>{info}</p>
                     <button>{btn}</button>
                 </div>
         </div>
