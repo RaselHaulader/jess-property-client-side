@@ -3,7 +3,7 @@ import CategoryItem from './CategoryItem';
 
 const Category = () => {
     return (
-        <div className='container mt-5'>
+        <div className='container py-3 my-5'>
             <div className='catagory-body'>
                 <CategoryItem name="Home" icon="fas fa-home" />
                 <CategoryItem name="Apartment" icon="far fa-building" />

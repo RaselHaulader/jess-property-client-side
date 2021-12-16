@@ -1,4 +1,5 @@
 import React from 'react';
+import AddedTodays from '../AddedTodays/AddedTodays';
 import AddPropertySection from '../AddPropertySection/AddPropertySection';
 import AllProperties from '../AllProperties/AllProperties';
 import Banner from '../Banner/Banner';
@@ -13,6 +14,7 @@ const Home = () => {
             <Category></Category>
             <AddPropertySection></AddPropertySection>
             <AllProperties></AllProperties>
+            <AddedTodays></AddedTodays>
         </div>
     );
 };

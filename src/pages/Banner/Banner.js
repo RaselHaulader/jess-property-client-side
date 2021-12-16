@@ -1,8 +1,6 @@
 import React from 'react';
 import './BannerStyle.css';
-import Dropdown from 'react-bootstrap/Dropdown'
 import banner from '../../images/bannerbg.png'
-
 const Banner = () => {
     return (
         <div style={{ backgroundImage: `url(${banner})` }} className='banner-container d-flex align-items-center'>
