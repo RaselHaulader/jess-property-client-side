@@ -44,18 +44,18 @@ nav{
     
 }
 .nav-link ul li a:hover{
-    color: #FD390E;
+    color: crimson;
     
 }
 .sign-in p{
     display: inline-block;
-    color:#FD390E;
+    color:crimson;
     font-weight:600;
     margin-right: 10px;
 }
 .sign-in button{
     padding: 8px 17px;
-    background: #FD390E;
+    background: crimson;
     color: white;
     border-radius: 5px;
     border: none;
@@ -65,8 +65,7 @@ nav{
 
 .catagory-body{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 20px;
+  
     grid-gap: 15px;
 }
 .catagory-item {
@@ -86,11 +85,11 @@ nav{
     padding: 10px;
     background: rgba(241, 224, 224, 0.74);
     border-radius: 50%;
-    color: #FD390E;
+    color: crimson;
     transition: .30s;
 }
 .catagory-item:hover i{
-    background-color: #FD390E;
+    background-color: crimson;
     color: white;
 }
 .catagory-item h4{
@@ -106,25 +105,25 @@ nav{
     margin-top: 50px;
     padding: 0 10px;
 }
-.property-sell .card{
+.property-sell .cardItem{
     padding:20px;
     border-radius: 20px;
 }
-.property-sell .card:hover{
+.property-sell .cardItem:hover{
     box-shadow: rgba(31, 27, 45, 0.329) 0px 0.125rem 0.125rem -0.125rem, rgba(31, 27, 45, 0.08) 0px 0.25rem 0.75rem ;
 }
-.property-sell .card p{
+.property-sell .cardItem p{
    color: gray;
 }
-.property-sell .card img{
+.property-sell .cardItem img{
     width: 80%;
 }
-.property-sell .card{
+.property-sell .cardItem{
     text-align: center;
 }
-.property-sell .card button{
+.property-sell .cardItem button{
     padding: 10px 27px;
-    border: 2px solid #FD390E;
+    border: 2px solid crimson;
     background: white;
     border-radius: 5px;
     transition: .2s;
@@ -133,8 +132,8 @@ nav{
     font-size: 1.2em;
    
 }
-.property-sell .card:hover button{
-   background-color: #FD390E;
+.property-sell .cardItem:hover button{
+   background-color: crimson;
    color: white;
 }
 
@@ -143,8 +142,6 @@ nav{
     display: grid;
     grid-template-columns: repeat(1,1fr);
     grid-gap: 20px;
-    padding: 0 30px;
-    margin: 30px 0  ;
 }
 .property-card {
     border-radius: 20px;
@@ -162,7 +159,7 @@ nav{
 }
 .card-image img{
     width: 100%;
-    height: 230px;
+    height: 180px;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
 }
@@ -177,7 +174,7 @@ nav{
   right: 0;
   background-color: black;
  opacity: 0;
-  height: 230px;
+  height: 180px;
   width: 100%;
 }
 .property-card:hover .overley{
@@ -193,31 +190,30 @@ nav{
 .card-details h2{
     color: rgb(85, 85, 85);
 }
-.card-footer{
+.card-footers{
     display: flex;
     padding: 10px;
     justify-content: space-evenly;
     color: gray;
 }
 
-@media only screen and (min-width: 400px) and (max-width: 600px)  {
+@media only screen and (min-width: 200px) and (max-width: 600px)  {
     .catagory-body{
-        grid-template-columns: repeat(1,1fr);
-        background: blue;
+        grid-template-columns: repeat(2,1fr);
+        padding: 0;
     }
+    .banner-container{
+        height:70vh;
+    }
+    .input-container{
+      padding: 1px;
+    }
+
 }
 /* Medium devices (landscape tablets, 768px and up) */
  @media only screen and (min-width: 768px) {
     .banner-container{
-        display: flex;
-        flex-direction: row;
-    }
-    .banner-info{
-        width: 50%;
-       
-    }
-    .banner-img{
-        width: 50%;
+        height:80vh;
     }
 
     .catagory-body{
@@ -228,10 +224,16 @@ nav{
         padding: 0 20px;
     }
     .catagory-container{
-        margin: 80px 0;
+      
     }
     .properties-container{
         grid-template-columns: repeat(2,1fr);
+    }
+    .input-container{
+        padding: 30px;
+      }
+      .input-container > div{
+        margin: 10px;
     }
 } 
 
@@ -248,6 +250,16 @@ nav{
     .properties-container{
         grid-template-columns: repeat(4,1fr);
     }
+    .banner-container{
+        height:80vh;
+    }
+    .input-container{
+        padding: 50px;
+      }
+      .input-container > div{
+          margin: 10px;
+      }
+
 } 
 
 

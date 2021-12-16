@@ -13,7 +13,7 @@ const Banner = () => {
                         <p>Make your life easy and beautiful by</p>
                     </div>
                     <div className='d-flex input-container justify-content-center align-items-center'>
-                        <div className="mx-1">
+                        <div >
                             <label className='mb-1 text-danger' htmlFor="">Property Type</label><br />
                             <select className='btn btn-light' name="carlist">
                                 <option value="volvo">Property</option>
@@ -22,7 +22,7 @@ const Banner = () => {
                                 <option value="audi">Audi</option>
                             </select>
                         </div>
-                        <div className="mx-1">
+                        <div >
                         <label className='mb-1 text-danger' htmlFor="">Location</label><br />
                             <select className='btn btn-light' name="carlist">
                                 <option value="volvo">Property</option>
@@ -32,7 +32,7 @@ const Banner = () => {
                             </select>
                         </div>
                         
-                        <div className=" mx-1">
+                        <div>
                             <label style={{color:'transparent'}} htmlFor=""> btn</label> <br />
                             <button className='btn btn-danger'>Find Property</button>
                         </div>
