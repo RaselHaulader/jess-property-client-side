@@ -1,0 +1,74 @@
+[
+    {
+        "spot": "Cox's bazar Sea beach",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Cox%27s_Bazar_beach_%283991311%29.jpg/800px-Cox%27s_Bazar_beach_%283991311%29.jpg",
+        "location": "Cox-bazar",
+        "duration": 3,
+        "distance": 398.3,
+        "cost": 9000
+    },
+    {
+        "spot": "Saint Martin Island",
+        "img": "https://avijatrik.org/wp-content/uploads/2019/06/cover-3-870x555.jpg",
+        "location": "Cox-bazar",
+        "duration": 3,
+        "distance": 477.1,
+        "cost": 10500
+    },
+    {
+        "spot": "Jaflong River",
+        "img": "https://1.bp.blogspot.com/-q6eeZwXDv3k/X7kIsfj55UI/AAAAAAAAAeQ/7GVuuyGpjwg454YlyRVRlC-vvrFA9wxCwCLcBGAsYHQ/w640-h426/Tourist%2Bdestination%2B%2BJaflong%2B%2BBangladesh.jpg",
+        "location": "Sylhet",
+        "duration": 3,
+        "distance": 304.2,
+        "cost": 5000
+    },
+    {
+        "spot": "AmiaKhum waterfalls",
+        "img": "https://ttg.com.bd/uploads/tours/destinations/6444446e.jpg",
+        "location": "Bandarban",
+        "duration": 5,
+        "distance": 389.7,
+        "cost": 8300
+    },
+    {
+        "spot": "Ratargul swamp forest",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Ratargul_Swamp_Forest%2C_Sylhet%2C_Bangladesh.jpg/800px-Ratargul_Swamp_Forest%2C_Sylhet%2C_Bangladesh.jpg",
+        "location": "Sylhet",
+        "duration": 3,
+        "distance": 280.1,
+        "cost": 6600
+    },
+    {
+        "spot": "Sundarban Mangrove forest",
+        "img": "https://dailyasianage.com/library/1582060099_9.jpg",
+        "location": "Khulna",
+        "duration": 3,
+        "distance": 310.5,
+        "cost": 7800
+    },
+    {
+        "spot": "Hakaluki Haor ",
+        "img": "https://www.observerbd.com/2020/08/17/observerbd.com_1597672360.jpeg",
+        "location": "Sunamgonj",
+        "duration": 2,
+        "distance": 263.6,
+        "cost": 7000
+    },
+    {
+        "spot": "sajek Vally",
+        "img": "https://steemitimages.com/DQmb188mhMcEQmY6Cd7QUf9VVDRnTQBiDB7a7S4jk5aXknf/image-2018-01-31%20(2).jpg",
+        "location": "Rangamati",
+        "duration": 2,
+        "distance": 335.3,
+        "cost": 6500
+    },
+    {
+        "spot": "Madhobkundo Fountain",
+        "img": "https://porzoton.com/wp-content/uploads/elementor/thumbs/Madhabkunda_Waterfall02-ovn6gewcn33xuo1fz6t5bui5yzq1uxsv5f48jbxlma.jpg",
+        "location": "Moulovibajar",
+        "duration": 2,
+        "distance": 263.9,
+        "cost": 3400
+    }
+]
