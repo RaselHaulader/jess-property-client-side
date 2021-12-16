@@ -23,7 +23,7 @@ const Banner = () => {
                             </select>
                         </div>
                         <div className="mx-1">
-                        <label className='mb-1 text-danger' htmlFor="">Property Type</label><br />
+                        <label className='mb-1 text-danger' htmlFor="">Location</label><br />
                             <select className='btn btn-light' name="carlist">
                                 <option value="volvo">Property</option>
                                 <option value="saab">Saab</option>
