@@ -27,26 +27,17 @@ nav{
     font-weight: 600;
     color: black;
 }
-.nav-link{
-    display: inline-block;
-}
-.nav-link ul{
-    padding: 0 0 0 10px;
-}
-.nav-link ul li{
-    display: inline-block;
-}
-.nav-link ul li a{
-    text-decoration: none;
-    color: black;
+
+.nav-link {
+    color: rgb(0, 0, 0) !important;
     font-weight: 500;
-    margin: 0 10px;
-    
+    border-bottom: 2px solid rgba(220, 20, 60, 0);
+    transition: .5s;
 }
-.nav-link ul li a:hover{
-    color: rgb(243, 70, 104);
-    
-}
+.nav-link:hover {
+    color: rgb(197, 53, 53) !important;
+    border-bottom: 2px solid rgb(220, 20, 60);
+} 
 .sign-in p{
     display: inline-block;
     color:rgb(243, 70, 104);
@@ -131,9 +122,6 @@ text-decoration: none;
 }
 .property-sell .cardItem img{
     width: 80%;
-}
-.property-sell .cardItem{
-   
 }
 .property-sell .cardItem button{
     padding: 10px 27px;
@@ -241,7 +229,25 @@ text-decoration: none;
         padding: 0;
     }
     .banner-container{
-        height:70vh;
+        height:100vh;
+    }
+    .input-container{
+      padding: 1px;
+    }
+    .allPropertyPageProperties{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 10px 10px;
+    }
+
+}
+@media only screen and (min-width: 600px){
+    .catagory-body{
+        grid-template-columns: repeat(2,1fr);
+        padding: 0;
+    }
+    .banner-container{
+        height:100vh;
     }
     .input-container{
       padding: 1px;
@@ -256,7 +262,7 @@ text-decoration: none;
 /* Medium devices (landscape tablets, 768px and up) */
  @media only screen and (min-width: 768px) {
     .banner-container{
-        height:80vh;
+        height:100vh;
     }
 
     .catagory-body{
@@ -265,9 +271,6 @@ text-decoration: none;
     .property-sell{
         grid-template-columns: repeat(2,1fr);
         padding: 0 20px;
-    }
-    .catagory-container{
-      
     }
     .properties-container{
         grid-template-columns: repeat(2,1fr);
@@ -299,7 +302,7 @@ text-decoration: none;
         grid-template-columns: repeat(4,1fr);
     }
     .banner-container{
-        height:80vh;
+        height:100vh;
     }
     .input-container{
         padding: 50px;

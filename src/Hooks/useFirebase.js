@@ -6,6 +6,7 @@ const auth = getAuth();
 const GoogleProvider = new GoogleAuthProvider();
 const useFirebase = () => {
     const [user, setUser] = useState({})
+    const [loading, setLoading] = useState(true)
 
     const googleSignIn = () => {
         return signInWithPopup(auth, GoogleProvider)
@@ -22,6 +23,7 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
+                setLoading(false)
             } else {
               
             }
@@ -32,7 +34,8 @@ const useFirebase = () => {
         googleSignIn,
         user,
         setUser,
-        logOut
+        logOut,
+        loading
     }
 };
 
