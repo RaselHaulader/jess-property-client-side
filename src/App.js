@@ -12,6 +12,7 @@ import Login from './pages/Login/Login';
 import AuthProvider from './context/AuthProvider';
 import RequireAuth from './PrivateRoute/PrivateRoute';
 import PropertyDetails from './pages/PropertyDetails/PropertyDetails';
+import AllPropertyPage from './pages/AllPropertyPage/AllPropertyPage';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/allProperty" element={<AllPropertyPage/>} />
           <Route path="/details" element={
             <RequireAuth>
               <PropertyDetails></PropertyDetails>

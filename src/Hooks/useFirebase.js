@@ -1,7 +1,6 @@
 import firebaseInit from "../Firebase/firebaseInit";
 import { getAuth,signOut, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 firebaseInit()
 const auth = getAuth();
 const GoogleProvider = new GoogleAuthProvider();
