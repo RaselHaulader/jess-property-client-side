@@ -61,12 +61,16 @@ text-decoration: none;
 color: crimson;
 text-decoration: none;
 }
-.sign-in button{
+.sign-in a{
     padding: 8px 17px;
     background: crimson;
     color: white;
     border-radius: 5px;
     border: none;
+}
+.sign-in a:hover{
+    background: rgb(170, 22, 52);
+    color: white;
 }
 
 /* catagory styles  */
@@ -242,6 +246,11 @@ text-decoration: none;
     .input-container{
       padding: 1px;
     }
+    .allPropertyPageProperties{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 10px 10px;
+    }
 
 }
 /* Medium devices (landscape tablets, 768px and up) */
@@ -269,6 +278,11 @@ text-decoration: none;
       .input-container > div{
         margin: 10px;
     }
+    .allPropertyPageProperties{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 10px 10px;
+    }
 } 
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -293,6 +307,11 @@ text-decoration: none;
       .input-container > div{
           margin: 10px;
       }
+      .allPropertyPageProperties{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 40px 40px;
+    }
 
 } 
 

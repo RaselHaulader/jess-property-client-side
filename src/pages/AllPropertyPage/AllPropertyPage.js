@@ -5,12 +5,12 @@ import './AllPropertyPageStyle.css'
 import Header from '../Header/Header';
 const AllPropertyPage = () => {
     return (
-        <div className='w-100'>
+        <div style={{maxWidth:'1200px', margin:'auto'}}>
             <Header></Header>
-          <div className='px-5'>
-          <hr />
-          </div>
-            <div className='row'>
+            <div className='px-5'>
+                <hr />
+            </div>
+            <div className='row w-100'>
                 <div className='col-12 col-md-4 px-5'>
                     <div>
                         <button>For Rent</button> <button>For sell</button>
@@ -51,7 +51,7 @@ const AllPropertyPage = () => {
                         <AllPropertyItem img={img} ></AllPropertyItem>
                         <AllPropertyItem img={img} ></AllPropertyItem>
                         <AllPropertyItem img={img} ></AllPropertyItem>
-                    
+
                     </div>
                 </div>
             </div>
