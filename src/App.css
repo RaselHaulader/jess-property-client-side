@@ -44,26 +44,26 @@ nav{
     
 }
 .nav-link ul li a:hover{
-    color: crimson;
+    color: rgb(243, 70, 104);
     
 }
 .sign-in p{
     display: inline-block;
-    color:crimson;
+    color:rgb(243, 70, 104);
     font-weight:600;
     margin-right: 10px;
 }
 .sign-in a{
-color: crimson;
+color: rgb(243, 70, 104);
 text-decoration: none;
 }
 .sign-in a:hover{
-color: crimson;
+color: rgb(243, 70, 104);
 text-decoration: none;
 }
-.sign-in a{
+.sign-in a, .logOutBtn{
     padding: 8px 17px;
-    background: crimson;
+    background: rgb(243, 70, 104);
     color: white;
     border-radius: 5px;
     border: none;
@@ -97,11 +97,11 @@ text-decoration: none;
     padding: 10px;
     background: rgba(241, 224, 224, 0.74);
     border-radius: 50%;
-    color: crimson;
+    color: rgb(243, 70, 104);
     transition: .30s;
 }
 .catagory-item:hover i{
-    background-color: crimson;
+    background-color: rgb(243, 70, 104);
     color: white;
 }
 .catagory-item h4{
@@ -137,7 +137,7 @@ text-decoration: none;
 }
 .property-sell .cardItem button{
     padding: 10px 27px;
-    border: 2px solid crimson;
+    border: 2px solid rgb(243, 70, 104);
     background: rgba(255, 255, 255, 0);
     border-radius: 5px;
     transition: .2s;
@@ -170,7 +170,7 @@ text-decoration: none;
     box-shadow: rgba(31, 27, 45, 0.08) 0px 0.525rem 0.525rem 0.225rem, rgba(31, 27, 45, 0.08) 0px 0.45rem .8rem ;
 }
 .property-card:hover .card-details h5{
-    color: crimson;
+    color: rgb(243, 70, 104);
 }
 .card-image{
     position: relative;

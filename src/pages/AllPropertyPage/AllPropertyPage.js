@@ -5,45 +5,71 @@ import './AllPropertyPageStyle.css'
 import Header from '../Header/Header';
 const AllPropertyPage = () => {
     return (
-        <div style={{maxWidth:'1200px', margin:'auto'}}>
+        <div style={{ maxWidth: '1200px', margin: 'auto' }}>
             <Header></Header>
             <div className='px-5'>
                 <hr />
             </div>
-            <div className='row w-100'>
-                <div className='col-12 col-md-4 px-5'>
+            <div className='row w-100 filter-section'>
+                <div className='col-12 col-md-4 px-5 '>
                     <div>
-                        <button>For Rent</button> <button>For sell</button>
+                        <h3 className='p-0 m-0'>Filter</h3>
                         <hr />
+                        <label htmlFor="">Category </label><br />
+                        <select className='w-100'>
+                            <option value="">For Sell</option>
+                            <option value="">For Rent</option>
+                        </select>
                     </div>
-                    <div>
-                        <h3>Location</h3>
-                        <input type="text" />
-                        <input type="text" />
-                    </div>
-                    <div>
-                        <h3>Property Type</h3>
-                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-                        <label for="vehicle1"> I have a bike</label><br />
-                    </div>
-                    <div>
-                        <h3>Property Price</h3>
-                        <input type="text" />
-                    </div>
-                </div>
-                <div className='col-12 col-md-8 px-5'>
-                    <div>
-                        <p>Home &gt; Property List</p>
-                    </div>
-                    <h3>Property For sell</h3>
                     <div>
                         <div>
-                            sort by : <select>
-                                <option>Option</option>
+                            <label htmlFor="">Location</label><br />
+                            <select className='w-100'>
+                                <option value="">Jashore</option>
+                                <option value="">Khulna</option>
+                                <option value="">Jhenidah</option>
+                                <option value="">Narail</option>
+                                <option value="">Magura</option>
+                                <option value="">Kustia</option>
+                                <option value="">Meherpur</option>
+                                <option value="">Bagerhat</option>
                             </select>
                         </div>
                     </div>
-                    <div className='allPropertyPageProperties'>
+                    <div>
+                        <label htmlFor="">Property Type </label><br />
+                        <select className='w-100'>
+                            <option value="">Apartment</option>
+                            <option value="">Home</option>
+                            <option value="">Land</option>
+                            <option value="">Shop</option>
+                            <option value="">Office</option>
+                            <option value="">Commercial</option>
+                        </select>
+                    </div>
+                    <div className='priceRange'>
+                        <label htmlFor="">Price Range</label> <br />
+                        <div d-flex>
+                            <input className='w-50' placeholder=' min' type="number" />  
+                            <input placeholder=' max' className='w-50' type="number" />
+                        </div>
+                    </div>
+                    <button className='w-100 my-3 applyFilter'>Apply Filter</button>
+                </div>
+                <div className='col-12 col-md-8 px-5 pt-0 mt-0 propertyPageItems'>
+                    <div>
+                        <p className='my-1 py-0'>Home &gt; <span className='text-danger'> Property List</span></p>
+                    </div>
+                    <h3 className='my-3 fw-bolder'>Property For sell</h3>
+                    <div>
+                        <div>
+                            <label className='text-secondary' htmlFor="">Sort by :</label> <select>
+                                <option>Newest</option>
+                                <option>Oldest</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className='allPropertyPageProperties mt-3'>
                         <AllPropertyItem img={img} ></AllPropertyItem>
                         <AllPropertyItem img={img} ></AllPropertyItem>
                         <AllPropertyItem img={img} ></AllPropertyItem>
@@ -51,7 +77,6 @@ const AllPropertyPage = () => {
                         <AllPropertyItem img={img} ></AllPropertyItem>
                         <AllPropertyItem img={img} ></AllPropertyItem>
                         <AllPropertyItem img={img} ></AllPropertyItem>
-
                     </div>
                 </div>
             </div>

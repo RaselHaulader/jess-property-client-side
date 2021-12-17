@@ -1,0 +1,35 @@
+.buyerInfo input{
+    border: 1px solid rgba(158, 158, 158, 0.336);
+    box-shadow: 6px 6px 44px 10px rgba(248, 248, 248, 0.13);
+    border-radius: 5px;
+    color: gray;
+    padding:5px 5px 5px 1px;
+}
+.buyerInfo label{
+    margin:10px 0 5px 0;
+}
+.styleBtn{
+    background-color: rgb(243, 70, 104);
+    border-radius: 5px;
+    border:none;
+    padding:5px 10px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.tagName{
+    color: white;
+    margin: 3px 2px;
+    border-radius: 5px;
+    padding:1px 7px;
+    display: inline-block;
+} 
+.newTagName{
+    background-color: rgb(72, 165, 241);
+}
+.verifiedTagName{
+    background-color: rgb(62, 219, 127);
+}
+.featuredTagName{
+    background-color: rgb(219, 62, 70);
+}

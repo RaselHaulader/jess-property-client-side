@@ -21,19 +21,19 @@ const Header = () => {
               <Link to='/' className="nav-link active" aria-current="page" href="#">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/allProperty" className="nav-link active" aria-current="page" href="#">Property</Link>
+              <Link to="/allProperty" className="nav-link active" aria-current="page" href="#">Properties</Link>
             </li>
             <li className="nav-item">
               <Link to="/details" className="nav-link active" aria-current="page" href="#">About</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">Contact</a>
+              <a className="nav-link active" aria-current="page" href="#">My Account</a>
             </li>
 
           </ul>
           <form class="">
             <div className="sign-in d-flex align-items-center ">
-              <p className='my-0 py-0'>{user.email ? <><img width='30px' style={{borderRadius:'50%'}} src={user.photoURL} alt="" />  <span onClick={() => logOut()}> LogOut</span> </> : <Link to='/login'> <i className="fas fa-sign-in-alt"></i> Sign in</Link>}</p>
+              <p className='my-0 py-0'>{user.email ? <><img width='30px' style={{borderRadius:'50%'}} src={user.photoURL} alt="" />  <span  style={{cursor:'pointer'}} onClick={() => logOut()}>Log Out <i className="fas fa-sign-out-alt"></i></span> </> : <Link to='/login'> <i className="fas fa-sign-in-alt"></i> Sign in</Link>}</p>
               <Link to='/addProperty'> <span style={{ fontSsize: "20px" }} >+</span> Add Property</Link>
             </div>
           </form>
