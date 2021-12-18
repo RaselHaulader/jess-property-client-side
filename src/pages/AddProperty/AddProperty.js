@@ -13,7 +13,7 @@ const AddProperty = () => {
                 propertiesDetails[e.target[i].name] = e.target[i].value
             }
         }
-        axios.post('http://localhost:5000/post', propertiesDetails)
+        axios.post('https://secret-basin-56489.herokuapp.com/post', propertiesDetails)
             .then(res => {
                 if (res.data.acknowledged) {
                     window.alert('Success')
@@ -45,7 +45,7 @@ const AddProperty = () => {
                                     <div className='col-12 col-md-6'>
                                         <label htmlFor="">Category *</label><br />
                                         <select required name='category' className='w-100'>
-                                            <option value="select">select</option>
+                                            <option value="">select</option>
                                             <option value="For Sell">For Sell</option>
                                             <option value="For Rent">For Rent</option>
                                         </select>
@@ -53,7 +53,7 @@ const AddProperty = () => {
                                     <div className='col-12 col-md-6'>
                                         <label htmlFor="">Property Type *</label><br />
                                         <select required name='PropertyType' className='w-100'>
-                                            <option value="select">select</option>
+                                            <option value="">select</option>
                                             <option value="Apartment">Apartment</option>
                                             <option value="Home">Home</option>
                                             <option value="Land">Land</option>
@@ -88,7 +88,7 @@ const AddProperty = () => {
                                     <div className='col-12 col-md-6'>
                                         <label htmlFor="">District *</label><br />
                                         <select required name='district' className='w-100'>
-                                            <option value="select">select</option>
+                                            <option value="">select</option>
                                             <option value="Jashore">Jashore</option>
                                             <option value="Khulna">Khulna</option>
                                             <option value="Jhenidah">Jhenidah</option>
@@ -109,7 +109,7 @@ const AddProperty = () => {
                                     <div className='col-12 col-md-6'>
                                         <label htmlFor="">City Type *</label><br />
                                         <select name='cityType' required className='w-100'>
-                                            <option value="select">select</option>
+                                            <option value="">select</option>
                                             <option value="Municipality">Municipality</option>
                                             <option value="Union">Union</option>
                                         </select>

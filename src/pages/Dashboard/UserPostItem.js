@@ -1,9 +1,10 @@
 import React from 'react';
+import Header from '../Header/Header';
 
 const PropertyItemsDashboard = () => {
     return (
-        <div>
-            
+        <div className='container'>
+           
         </div>
     );
 };

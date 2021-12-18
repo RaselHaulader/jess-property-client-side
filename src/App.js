@@ -14,6 +14,8 @@ import RequireAuth from './PrivateRoute/PrivateRoute';
 import PropertyDetails from './pages/PropertyDetails/PropertyDetails';
 import AllPropertyPage from './pages/AllPropertyPage/AllPropertyPage';
 import AddProperty from './pages/AddProperty/AddProperty';
+import Dashboard from './pages/Dashboard/Dashboard';
+import UsersPosts from './pages/Dashboard/UsersPosts';
 
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/allProperty" element={<AllPropertyPage />} />
-          <Route path="/details" element={
+          <Route path="/details/:id" element={
             <RequireAuth>
               <PropertyDetails></PropertyDetails>
             </RequireAuth>
@@ -35,6 +37,18 @@ function App() {
               <AddProperty></AddProperty>
             </RequireAuth>
           } />
+          <Route path="/dashboard" element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          } >
+            <Route path="/dashboard/userPost" element={
+              <RequireAuth>
+                <UsersPosts></UsersPosts>
+              </RequireAuth>
+            } />
+
+          </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -11,9 +11,10 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Category></Category>
-            <AddedTodays></AddedTodays>
-            <AddPropertySection></AddPropertySection>
             <AllProperties></AllProperties>
+            <AddPropertySection></AddPropertySection>
+            <AddedTodays></AddedTodays>
+           
 
         </div>
     );

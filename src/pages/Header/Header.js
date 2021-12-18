@@ -2,6 +2,7 @@ import React from 'react';
 import logo from '../../images/logo.png';
 import { Link } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth';
+import { HashLink } from 'react-router-hash-link';
 
 const Header = () => {
   const { user, logOut } = useAuth()
@@ -24,10 +25,10 @@ const Header = () => {
               <Link to="/allProperty" className="nav-link active" aria-current="page" href="#">Properties</Link>
             </li>
             <li className="nav-item">
-              <Link to="/details" className="nav-link active" aria-current="page" href="#">About</Link>
+              <HashLink  smooth to="/home#recent" className="nav-link active" aria-current="page">Recent</HashLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">My Account</a>
+              <Link to='/dashboard' className="nav-link active" aria-current="page" href="#">My Account</Link>
             </li>
 
           </ul>

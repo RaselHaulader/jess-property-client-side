@@ -8,7 +8,7 @@ const AddedTodays = () => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        axios('http://localhost:5000/allProperties3')
+        axios('https://secret-basin-56489.herokuapp.com/allProperties3')
             .then(res => {
                 console.log(res.data);
                 setItems(res.data)
@@ -17,9 +17,9 @@ const AddedTodays = () => {
 
     }, [])
     return (
-        <div className='container pb-5 pt-1 my-5'>
+        <div id="recent" className='container pb-5 pt-1 my-5'>
             <div className='d-flex justify-content-between mb-3 mt-5'>
-                <h3 className='fw-bold'>ADDED TODAY</h3>
+                <h3 className='fw-bold'>ADDED RECENT</h3>
                 <Link className='text-decoration-none' to='/allProperty'><p className='text-danger fw-bold'>See All <i className="fas fa-long-arrow-alt-right"></i></p></Link>
             </div>
             <div className='row'>

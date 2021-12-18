@@ -6,7 +6,7 @@ import axios from 'axios';
 const AllPropertyPage = () => {
     const [items, setItems] = useState([])
     useEffect(() => {
-        axios('http://localhost:5000/allProperties')
+        axios('https://secret-basin-56489.herokuapp.com/allProperties')
             .then(res => {
                 console.log(res.data);
                 setItems(res.data)
