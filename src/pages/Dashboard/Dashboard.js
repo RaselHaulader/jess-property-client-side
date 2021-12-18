@@ -14,43 +14,56 @@ const Dashboard = () => {
                         <h5 className='fw-bold text-secondary mb-4'>My Account</h5>
                         <hr />
                         <div className=''>
-                            <div className='d-flex align-items-center justify-content-between link-item'>
-                                <Link to='/dashboard/userPost'>My Post </Link>
-                                <i className="fas fa-long-arrow-alt-right"></i>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-between link-item'>
-                                <Link to=''>My WishList </Link>
-                                <i className="fas fa-long-arrow-alt-right"></i>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-between link-item'>
-                                <Link to=''>My Request </Link>
-                                <i className="fas fa-long-arrow-alt-right"></i>
-                            </div>
-
+                            <Link to='/dashboard/userPost'>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>My Post </p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
+                            <Link to='/dashboard/wishList'>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>My Wish List </p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
+                            <Link to='/dashboard/UserRequest'>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>My Request</p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
                         </div>
                         <div>
-                            <div className='d-flex align-items-center justify-content-between link-item'>
-                                <Link to=''>All Users</Link>
-                                <i className="fas fa-long-arrow-alt-right"></i>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-between link-item'>
-                                <Link to=''>Users Post </Link>
-                                <i className="fas fa-long-arrow-alt-right"></i>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-between link-item'>
-                                <Link to=''>Users Wishlist </Link>
-                                <i className="fas fa-long-arrow-alt-right"></i>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-between link-item'>
-                                <Link to=''>Users Request</Link>
-                                <i className="fas fa-long-arrow-alt-right"></i>
-                            </div>
+                            <Link to='/dashboard/users'>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>All Users</p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
+                            <Link to='/dashboard/allPost'>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>Users Post</p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
+                            <Link to='/dashboard/allRequest'>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>Users Request</p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
+                            <Link to='/dashboard/allWishList'>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>Users Wish List</p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
                         </div>
                     </div>
                     <div className='col-12 col-md-9'>
-                        <h5 className='fw-bold text-secondary mb-4'>My Post</h5>
+                        <h5 className='fw-bold text-secondary mb-4'>Dashboard</h5>
                         <hr />
-                        <Outlet/>
+                        <Outlet />
                     </div>
                 </div>
             </div>

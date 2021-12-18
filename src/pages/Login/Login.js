@@ -7,16 +7,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [toggle, setToggle] = useState(false)
-    const { googleSignIn, user, setUser } = useAuth()
+    const { googleSignIn, createAccount, emailLogin, user, setUser } = useAuth()
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
 
-    const onSubmit = data => {
-        console.log(data)
-        reset()
-    };
+
     const handleToggle = () => {
         toggle ? setToggle(false) : setToggle(true)
     }
@@ -28,6 +25,42 @@ const Login = () => {
             console.log(error);
         });
     }
+
+
+    const handleEmailSignIn = (email,pass) => {
+        emailLogin(email,pass)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+             
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    }
+
+    const handleCreateAccount = (email,pass,name) => {
+        createAccount(email,pass,name)
+            .then((userCredential) => {
+                const user = userCredential.user;
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            });
+    }
+
+    const onSubmit = data => {
+        console.log(data)
+        reset()
+        if (data.name) {
+            handleCreateAccount(data.email,data.password, data.name) 
+        }else{
+            handleEmailSignIn(data.email,data.password)
+        }
+    
+    };
     return (
         <div className='container '>
             <Header></Header>

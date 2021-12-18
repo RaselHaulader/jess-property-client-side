@@ -16,6 +16,13 @@ import AllPropertyPage from './pages/AllPropertyPage/AllPropertyPage';
 import AddProperty from './pages/AddProperty/AddProperty';
 import Dashboard from './pages/Dashboard/Dashboard';
 import UsersPosts from './pages/Dashboard/UsersPosts';
+import UserRequest from './pages/Dashboard/UserRequest';
+import UsersWishList from './pages/Dashboard/UsersWishList';
+import AdminRoute from './PrivateRoute/AdminRoute';
+import AllUser from './pages/Dashboard/AllUser';
+import AllPosts from './pages/Dashboard/AllPosts';
+import AllRequest from './pages/Dashboard/AllRequest';
+import AllWishList from './pages/Dashboard/AllWishList';
 
 
 function App() {
@@ -46,6 +53,36 @@ function App() {
               <RequireAuth>
                 <UsersPosts></UsersPosts>
               </RequireAuth>
+            } />
+            <Route path="/dashboard/wishList" element={
+              <RequireAuth>
+                <UsersWishList></UsersWishList>
+              </RequireAuth>
+            } />
+            <Route path="/dashboard/UserRequest" element={
+              <RequireAuth>
+               <UserRequest></UserRequest>
+              </RequireAuth>
+            } />
+            <Route path="/dashboard/users" element={
+              <AdminRoute>
+              <AllUser></AllUser>
+              </AdminRoute>
+            } />
+            <Route path="/dashboard/allPost" element={
+              <AdminRoute>
+              <AllPosts></AllPosts>
+              </AdminRoute>
+            } />
+            <Route path="/dashboard/allRequest" element={
+              <AdminRoute>
+               <AllRequest></AllRequest>
+              </AdminRoute>
+            } />
+            <Route path="/dashboard/allWishList" element={
+              <AdminRoute>
+              <AllWishList></AllWishList>
+              </AdminRoute>
             } />
 
           </Route>
