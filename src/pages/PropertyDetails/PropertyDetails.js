@@ -10,7 +10,10 @@ const PropertyDetails = () => {
 
             <div className='container'>
                 <hr />
-                <p>Home &gt; Property for  <span>sell</span> &gt;  <span className='text-danger'>Property name</span></p>
+               <div className=' justify-content-between'>
+               <p>Home &gt; Property for  <span>sell</span> &gt;  <span className='text-danger'>Property name</span></p>
+               <p className='text-secondary m-0 pt-0'><small>Posted : 12-23-3 1:23:12 pm</small></p>
+               </div>
 
                 <div className='row w-100 px-0 mx-0'>
                     <div className='col-8 ps-0 h-100'>

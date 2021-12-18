@@ -25,7 +25,7 @@ const useFirebase = () => {
                 setUser(user)
                 setLoading(false)
             } else {
-              
+                setLoading(false)
             }
         });
     }, [user])

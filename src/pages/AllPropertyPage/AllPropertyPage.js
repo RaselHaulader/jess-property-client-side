@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AllPropertyItem from '../AllProperties/AllPropertyItem';
-import img from '../../images/bannerbg.png'
 import './AllPropertyPageStyle.css'
 import Header from '../Header/Header';
+import axios from 'axios';
 const AllPropertyPage = () => {
+    const [items, setItems] = useState([])
+    useEffect(() => {
+        axios('http://localhost:5000/allProperties')
+            .then(res => {
+                console.log(res.data);
+                setItems(res.data)
+            })
+
+
+    }, [])
     return (
         <div style={{ maxWidth: '1200px', margin: 'auto' }}>
             <Header></Header>
@@ -50,7 +60,7 @@ const AllPropertyPage = () => {
                     <div className='priceRange'>
                         <label htmlFor="">Price Range</label> <br />
                         <div d-flex>
-                            <input className='w-50' placeholder=' min' type="number" />  
+                            <input className='w-50' placeholder=' min' type="number" />
                             <input placeholder=' max' className='w-50' type="number" />
                         </div>
                     </div>
@@ -70,13 +80,7 @@ const AllPropertyPage = () => {
                         </div>
                     </div>
                     <div className='allPropertyPageProperties mt-3'>
-                        <AllPropertyItem img={img} ></AllPropertyItem>
-                        <AllPropertyItem img={img} ></AllPropertyItem>
-                        <AllPropertyItem img={img} ></AllPropertyItem>
-                        <AllPropertyItem img={img} ></AllPropertyItem>
-                        <AllPropertyItem img={img} ></AllPropertyItem>
-                        <AllPropertyItem img={img} ></AllPropertyItem>
-                        <AllPropertyItem img={img} ></AllPropertyItem>
+                        { items.map(item => <AllPropertyItem key={item._id} items={item} />) }
                     </div>
                 </div>
             </div>

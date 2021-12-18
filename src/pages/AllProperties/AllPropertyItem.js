@@ -1,25 +1,25 @@
 import React from 'react';
 
-const AllPropertyItem = ({ img }) => {
+const AllPropertyItem = ({ items }) => {
     return (
 
         <div className="property-card">
             <div className="card-image">
-                <img src={img} alt="" />
+                <img src={items?.img1} alt="" />
                 <div className="overley">
 
                 </div>
                 <div className='overley-2'>
                     <p className='overley-tag1'>New</p> <br />
-                   {true ?  <p className='overley-tag2 '>Verified</p> : ''}
+                    {true ? <p className='overley-tag2 '>Verified</p> : ''}
                 </div>
 
             </div>
             <div className="card-details">
-                <p style={{ color: "crimson"}}>For sale</p>
-                <h6 className='fw-bold'>Land jashore || 200sqm</h6>
-                <p className='my-3'> kazi para, 5 no word, sadar , Jashore, Khulna</p>
-                <h6 style={{ color: "rgba(236, 95, 95, 0.966)", fontWeight: "600" }}>৳ 150000</h6>
+                <p style={{ color: "crimson" }}>{items?.category}</p>
+                <h6 className='fw-bold'>{items?.title} || {items?.propertySize}sqm</h6>
+                <p className='my-3'> {items?.district + ", " + items?.upozila + ", " + items?.village + ", " + items?.streetNo} </p>
+                <h6 style={{ color: "rgba(236, 95, 95, 0.966)", fontWeight: "600" }}>৳ {items?.price}</h6>
                 <hr />
                 <div className="card-footers">
                     <p className='p-0 m-0'>8ft <i className="fas fa-text-width"></i></p>
