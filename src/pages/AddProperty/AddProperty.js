@@ -3,12 +3,19 @@ import Header from '../Header/Header';
 import './AddPropertyStyle.css';
 import axios from 'axios'
 import Footer from '../Footer/Footer';
-
+import { useSelector } from 'react-redux';
 const AddProperty = () => {
+    // user from redux store
+    const user = useSelector(state=> state.user.userAuth)
+    // handle submit
     const handleSubmit = (e) => {
         e.preventDefault()
         let propertiesDetails = {}
+        // set date
         propertiesDetails['date'] = new Date().toLocaleString();
+        // set user email
+        propertiesDetails['user'] = user.email
+        // set all input data to propertyDetails object by using a loop 
         for (let i = 0; i < e.target.length; i++) {
             if (e.target[i].name) {
                 propertiesDetails[e.target[i].name] = e.target[i].value

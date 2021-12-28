@@ -6,31 +6,53 @@ import useAuth from '../../Hooks/useAuth';
 import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { addUserAuth } from '../../redux/slices/userSlices';
+import axios from 'axios';
 const Login = () => {
     const [toggle, setToggle] = useState(false)
-     const { googleSignIn, updateProfile, auth, createAccount, emailLogin } = useAuth()
-
+    // firebase auth
+    const { googleSignIn, updateProfile, auth, createAccount, emailLogin } = useAuth()
+    // react form hook
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
+    // react router
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-      const dispatch = useDispatch()
+    // redux dispatch
+    const dispatch = useDispatch()
 
+    // toggle login and register
     const handleToggle = () => {
         toggle ? setToggle(false) : setToggle(true)
     }
+
+    //save user data to db
+    const saveUserInfo = (data) => {
+        axios.post('http://localhost:5000/saveUser', data)
+            .then(res => console.log(res))
+    }
+
+    //  google login
     const handleGoogleSignIn = () => {
-        googleSignIn().then((result) => {
-            dispatch(addUserAuth(result.user))
-            console.log(result.user)
+
+        googleSignIn().then(({ user }) => {
+            // save info to db
+            const userInfo = {
+                name: user.displayName,
+                email: user.email
+            }
+            saveUserInfo(userInfo)
+            // set to redux store
+            dispatch(addUserAuth(user))
+            // redirect after login
             navigate(from, { replace: true });
         }).catch((error) => {
             console.log(error);
         });
     }
+    // email login
     const handleEmailSignIn = (email, pass) => {
-        console.log('log in',email , pass);
-        emailLogin(email,pass)
+        console.log('log in', email, pass);
+        emailLogin(email, pass)
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
@@ -38,10 +60,10 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch((error) => {
-               console.log(error);
+                console.log(error);
             });
     }
-
+    // register user
     const handleCreateAccount = (email, pass, name) => {
         console.log('create');
         createAccount(email, pass)
@@ -50,18 +72,20 @@ const Login = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
-                    console.log('updatedName');
+                    //save user to db
+                    saveUserInfo({ name: name, email: email })
+                    // store in redux
                     dispatch(addUserAuth(user))
                     setToggle(false)
                 }).catch((error) => {
-                     
+
                 })
             })
             .catch((error) => {
                 console.log(error.message);
             });
     }
-
+    // handle submit
     const onSubmit = data => {
         if (toggle) {
             //create account

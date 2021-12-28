@@ -220,7 +220,7 @@ text-decoration: none;
 .card-footers{
     display: flex;
     justify-content: space-evenly;
-    color: rgb(180, 180, 185);
+    color: rgba(89, 89, 114, 0.884);
 }
 
 @media only screen and (min-width: 200px) and (max-width: 600px)  {

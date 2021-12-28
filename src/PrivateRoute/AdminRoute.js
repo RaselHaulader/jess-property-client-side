@@ -9,8 +9,8 @@ const loading = useSelector(state=> state.user.loading)
     if (loading) { 
         return "loading...."
     }
-    if (!user.email) {
-        return <Navigate to="/login" state={{ from: location }} />;
+    if (false) {
+        return <Navigate to="/home" state={{ from: location }} />;
     }
 
     return children;

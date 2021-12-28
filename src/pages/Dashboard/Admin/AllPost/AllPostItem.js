@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../DashBoardStyle.css';
 
+
 const AllPostItem = ({ item }) => {
     const {title, price } = item
     return (
