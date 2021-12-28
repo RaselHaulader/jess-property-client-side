@@ -1,12 +1,10 @@
-# Explore Beautiful Bangladesh
+# Property Bazar
 
-Visit this site to enriched Your Knowledge about bd tour spot [Explore-beautiful-bangladesh](https://explore-beautiful-bangladesh.netlify.app/)
+Visit this site to learn more [Property Bazar](https://property-bazar-8a4ae.web.app/)
 
 ## Purpose of the site
 
-- Help to create a tour plan in Bangladesh
-- informed about amazing place of Bangladesh and cost to visit there
-- Presenting my loving country to the person who want to explore this
+- sell and buy property
 
 ## The technology with which the site has been built
 - html 
@@ -14,4 +12,9 @@ Visit this site to enriched Your Knowledge about bd tour spot [Explore-beautiful
 - bootstrap
 - React
 - fontawsome icon
-- google fonts
+- Node js
+- Express js
+- MongoDb
+- Redux toolkit
+- React Router
+
