@@ -4,62 +4,79 @@ import Header from '../Header/Header';
 import { useForm } from "react-hook-form";
 import useAuth from '../../Hooks/useAuth';
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { useDispatch } from 'react-redux';
+import { addUserAuth } from '../../redux/slices/userSlices';
 const Login = () => {
     const [toggle, setToggle] = useState(false)
-    const { googleSignIn, createAccount, emailLogin, user, setUser } = useAuth()
+     const { googleSignIn, updateProfile, auth, createAccount, emailLogin } = useAuth()
+
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
-
+      const dispatch = useDispatch()
 
     const handleToggle = () => {
         toggle ? setToggle(false) : setToggle(true)
     }
     const handleGoogleSignIn = () => {
         googleSignIn().then((result) => {
-            setUser(result.user);
+            dispatch(addUserAuth(result.user))
+            console.log(result.user)
             navigate(from, { replace: true });
         }).catch((error) => {
             console.log(error);
         });
     }
-
-
-    const handleEmailSignIn = (email,pass) => {
+    const handleEmailSignIn = (email, pass) => {
+        console.log('log in',email , pass);
         emailLogin(email,pass)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
-             
+                console.log(user);
+                dispatch(addUserAuth(user))
+                navigate(from, { replace: true });
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+               console.log(error);
             });
     }
 
-    const handleCreateAccount = (email,pass,name) => {
-        createAccount(email,pass,name)
+    const handleCreateAccount = (email, pass, name) => {
+        console.log('create');
+        createAccount(email, pass)
             .then((userCredential) => {
                 const user = userCredential.user;
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                    console.log('updatedName');
+                    dispatch(addUserAuth(user))
+                    setToggle(false)
+                }).catch((error) => {
+                     
+                })
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
+                console.log(error.message);
             });
     }
 
     const onSubmit = data => {
-        console.log(data)
-        reset()
-        if (data.name) {
-            handleCreateAccount(data.email,data.password, data.name) 
-        }else{
-            handleEmailSignIn(data.email,data.password)
+        if (toggle) {
+            //create account
+            if (data.password == data.ConfirmPassword) {
+                handleCreateAccount(data.email, data.password, data.name)
+            } else {
+                console.log('pass not matched');
+            }
+            console.log('create', data);
+        } else {
+            // login
+            console.log('login ', data);
+            handleEmailSignIn(data.email, data.password)
         }
-    
+        // reset()
     };
     return (
         <div className='container '>

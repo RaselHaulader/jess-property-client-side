@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Header from '../Header/Header';
 import './AddPropertyStyle.css';
 import axios from 'axios'
+import Footer from '../Footer/Footer';
 
 const AddProperty = () => {
     const handleSubmit = (e) => {
@@ -152,6 +153,7 @@ const AddProperty = () => {
                     </div>
                 </form>
             </div>
+            <Footer></Footer>
         </div >
     );
 };

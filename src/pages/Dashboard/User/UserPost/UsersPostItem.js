@@ -1,5 +1,5 @@
 import React from 'react';
-import './DashBoardStyle.css';
+import '../../DashBoardStyle.css';
 
 const UsersPostItem = ({ item }) => {
     const {title, price } = item

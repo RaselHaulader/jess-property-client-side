@@ -1,51 +1,52 @@
 import firebaseInit from "../Firebase/firebaseInit";
-import { getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, updateProfile, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { removeUserAuth, addUserAuth, handleLoading } from '../redux/slices/userSlices';
 firebaseInit()
 const auth = getAuth();
 const GoogleProvider = new GoogleAuthProvider();
-const useFirebase = () => {
-    const [user, setUser] = useState({})
-    const [loading, setLoading] = useState(true)
 
+const useFirebase = () => {
+
+    const dispatch = useDispatch()
+    const user = useSelector(state=> state.user.userAuth)
     const googleSignIn = () => {
+
         return signInWithPopup(auth, GoogleProvider)
     }
     const logOut = () => {
         signOut(auth).then(() => {
-            setUser({})
+            dispatch(removeUserAuth([]))
         }).catch((error) => {
         });
     }
-
-    const createAccount=(email,password,name)=>{
-     return   createUserWithEmailAndPassword(auth, email, password)
-       
+    const createAccount = (email, pass) => {
+        console.log(email, pass);
+        return createUserWithEmailAndPassword(auth, email, pass)
     }
-    const emailLogin=()=>{
-        return  signInWithEmailAndPassword(auth, email, password)
-      
+    const emailLogin = (email, pass) => {
+        return signInWithEmailAndPassword(auth, email, pass)
     }
-    
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
-                setUser(user)
-                setLoading(false)
+                console.log('stateChanged')
+                dispatch(addUserAuth(user))
+                dispatch(handleLoading(false))
             } else {
-                setLoading(false)
+                dispatch(handleLoading(false))
             }
         });
     }, [user])
 
     return {
         googleSignIn,
-        user,
-        setUser,
         logOut,
-        loading,
         createAccount,
-        emailLogin
+        emailLogin,
+        updateProfile,
+        auth,
     }
 };
 

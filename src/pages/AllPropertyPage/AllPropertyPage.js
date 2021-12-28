@@ -3,6 +3,7 @@ import AllPropertyItem from '../AllProperties/AllPropertyItem';
 import './AllPropertyPageStyle.css'
 import Header from '../Header/Header';
 import axios from 'axios';
+import Footer from '../Footer/Footer';
 const AllPropertyPage = () => {
     const [items, setItems] = useState([])
     useEffect(() => {
@@ -84,6 +85,7 @@ const AllPropertyPage = () => {
                     </div>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

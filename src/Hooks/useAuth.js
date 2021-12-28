@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthProvider';
+import useFirebase from '../Hooks/useFirebase';
 
 const useAuth = () => {
-      
-    const allAuth = useContext(AuthContext)
-     
+    const allAuth = useFirebase()
     return allAuth
 };
 

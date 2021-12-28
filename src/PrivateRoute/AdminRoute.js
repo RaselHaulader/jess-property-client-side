@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import useAuth from '../Hooks/useAuth';
-
+import { useSelector } from 'react-redux';
 const AdminRoute = ({ children }) => {
-    let { user, loading } = useAuth();
+const user = useSelector(state=> state.user.userAuth)
+const loading = useSelector(state=> state.user.loading)
     let location = useLocation();
+   
     if (loading) { 
         return "loading...."
     }

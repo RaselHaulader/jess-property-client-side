@@ -9,25 +9,26 @@ import {
 } from "react-router-dom";
 import NotFound from './pages/NotFound/NotFound';
 import Login from './pages/Login/Login';
-import AuthProvider from './context/AuthProvider';
 import RequireAuth from './PrivateRoute/PrivateRoute';
 import PropertyDetails from './pages/PropertyDetails/PropertyDetails';
 import AllPropertyPage from './pages/AllPropertyPage/AllPropertyPage';
 import AddProperty from './pages/AddProperty/AddProperty';
 import Dashboard from './pages/Dashboard/Dashboard';
-import UsersPosts from './pages/Dashboard/UsersPosts';
-import UserRequest from './pages/Dashboard/UserRequest';
-import UsersWishList from './pages/Dashboard/UsersWishList';
+import UsersPosts from './pages/Dashboard/User/UserPost/UsersPosts';
+import UsersWishList from './pages/Dashboard/User/UserWish/UsersWishList';
+import UserRequest from './pages/Dashboard/User/UserRequest/UserRequest';
+import AllUser from './pages/Dashboard/Admin/AllUser/AllUser';
 import AdminRoute from './PrivateRoute/AdminRoute';
-import AllUser from './pages/Dashboard/AllUser';
-import AllPosts from './pages/Dashboard/AllPosts';
-import AllRequest from './pages/Dashboard/AllRequest';
-import AllWishList from './pages/Dashboard/AllWishList';
+import AllPosts from './pages/Dashboard/Admin/AllPost/AllPosts';
+import AllRequest from './pages/Dashboard/Admin/AllRequest/AllRequest';
+import AllWishList from './pages/Dashboard/Admin/AllWish/AllWishList';
+import UserProfile from './pages/Dashboard/User/UserProfile/UserProfile';
+import useAuth from './Hooks/useAuth';
 
 
 function App() {
+  const {logOut} = useAuth()
   return (
-    <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -49,6 +50,11 @@ function App() {
               <Dashboard></Dashboard>
             </RequireAuth>
           } >
+            <Route path="/dashboard/userProfile" element={
+              <RequireAuth>
+              <UserProfile></UserProfile>
+              </RequireAuth>
+            } />
             <Route path="/dashboard/userPost" element={
               <RequireAuth>
                 <UsersPosts></UsersPosts>
@@ -61,27 +67,27 @@ function App() {
             } />
             <Route path="/dashboard/UserRequest" element={
               <RequireAuth>
-               <UserRequest></UserRequest>
+                <UserRequest></UserRequest>
               </RequireAuth>
             } />
             <Route path="/dashboard/users" element={
               <AdminRoute>
-              <AllUser></AllUser>
+                <AllUser></AllUser>
               </AdminRoute>
             } />
             <Route path="/dashboard/allPost" element={
               <AdminRoute>
-              <AllPosts></AllPosts>
+                <AllPosts></AllPosts>
               </AdminRoute>
             } />
             <Route path="/dashboard/allRequest" element={
               <AdminRoute>
-               <AllRequest></AllRequest>
+                <AllRequest></AllRequest>
               </AdminRoute>
             } />
             <Route path="/dashboard/allWishList" element={
               <AdminRoute>
-              <AllWishList></AllWishList>
+                <AllWishList></AllWishList>
               </AdminRoute>
             } />
 
@@ -89,7 +95,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
   );
 }
 

@@ -3,9 +3,11 @@ import logo from '../../images/logo.png';
 import { Link } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth';
 import { HashLink } from 'react-router-hash-link';
-
+import { useSelector } from 'react-redux';
 const Header = () => {
-  const { user, logOut } = useAuth()
+  const { logOut } = useAuth()
+  const user = useSelector(state=> state.user.userAuth)
+
   return (
     <nav className="navbar px-0 mx-auto container navbar-expand-lg navbar-light ">
       <div className="container-fluid">
@@ -28,13 +30,13 @@ const Header = () => {
               <HashLink  smooth to="/home#recent" className="nav-link active" aria-current="page">Recent</HashLink>
             </li>
             <li className="nav-item">
-              <Link to='/dashboard' className="nav-link active" aria-current="page" href="#">My Account</Link>
+              <Link to='/dashboard/userPost' className="nav-link active" aria-current="page" href="#">My Account</Link>
             </li>
 
           </ul>
           <form class="">
             <div className="sign-in d-flex align-items-center ">
-              <p className='my-0 py-0'>{user.email ? <><img width='30px' style={{borderRadius:'50%'}} src={user.photoURL} alt="" />  <span  style={{cursor:'pointer'}} onClick={() => logOut()}>Log Out <i className="fas fa-sign-out-alt"></i></span> </> : <Link to='/login'> <i className="fas fa-sign-in-alt"></i> Sign in</Link>}</p>
+              <p className='my-0 py-0'>{user.email ? <> {user.photoURL? <img width='30px' style={{borderRadius:'50%'}} src={user.photoURL} alt="" /> : <span className='fw-bold text-dark'>{user.displayName}</span>} <span  style={{cursor:'pointer'}} onClick={() => logOut()}>Log Out <i className="fas fa-sign-out-alt"></i></span> </> : <Link to='/login'> <i className="fas fa-sign-in-alt"></i> Sign in</Link>}</p>
               <Link to='/addProperty'> <span style={{ fontSsize: "20px" }} >+</span> Add Property</Link>
             </div>
           </form>

@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
-import useAuth from '../Hooks/useAuth';
 
 const RequireAuth = ({ children }) => {
-    let {user,loading} = useAuth();
+    const user = useSelector(state=> state.user.userAuth)
+    const loading = useSelector(state=> state.user.loading)
     let location = useLocation();
+
     if(loading){
         return "loading...."
     }
     if (!user.email) {
         return <Navigate to="/login" state={{ from: location }} />;
     }
-
     return children;
 }
 
