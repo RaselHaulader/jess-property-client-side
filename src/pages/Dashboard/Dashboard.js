@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
-import useAuth from '../../Hooks/useAuth';
+import { handleAdmin } from '../../redux/slices/userSlices';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import './DashBoardStyle.css';
 
 const Dashboard = () => {
+    const [load, setLoad] = useState('initial')
     const [title, setTile] = useState('DashBoard')
+    const user = useSelector(state => state.user.userAuth)
+    const dispatch = useDispatch()
 
+    useEffect(() => {
+        axios(`http://localhost:5000/checkUsers/${user.email}`)
+            .then(res => {
+                console.log(res)
+                if (res.data[0].role === 'admin') {
+                    setLoad('admin')
+                    dispatch(handleAdmin(true))
+                } else {
+                    setLoad('user')
+                    dispatch(handleAdmin(false))
+                }
+            })
+    },[user])
     return (
         <div>
             <div className='container'>
@@ -16,35 +34,38 @@ const Dashboard = () => {
                 <div className='p-3'>
                     <div className='dashboardContainer row'>
                         <div className='col-12 col-md-3 link-container'>
-                            <h5 className='fw-bold text-secondary mb-4'>My Account</h5>
+                            <h5 className='fw-bold mb-4' style={{ color: 'crimson' }}>My Account</h5>
                             <hr />
-                            <div className=''>
-                                {/* <Link to='/dashboard/userProfile'  onClick={()=>setTile('My Profile')}>
+                            {
+
+                                load === 'user' && <div className=''>
+                                    {/* <Link to='/dashboard/userProfile'  onClick={()=>setTile('My Profile')}>
                                     <div className='d-flex align-items-center justify-content-between link-item'>
                                         <p>My Profile </p>
                                         <i className="fas fa-long-arrow-alt-right"></i>
                                     </div>
                                 </Link> */}
-                                <Link to='/dashboard/userPost' onClick={() => setTile('My Post ')}>
-                                    <div className='d-flex align-items-center justify-content-between link-item'>
-                                        <p>My Post </p>
-                                        <i className="fas fa-long-arrow-alt-right"></i>
-                                    </div>
-                                </Link>
-                                <Link to='/dashboard/wishList' onClick={() => setTile('My Wish List')}>
-                                    <div className='d-flex align-items-center justify-content-between link-item'>
-                                        <p>My Wish List </p>
-                                        <i className="fas fa-long-arrow-alt-right"></i>
-                                    </div>
-                                </Link>
-                                <Link to='/dashboard/UserRequest' onClick={() => setTile('My Message')}>
-                                    <div className='d-flex align-items-center justify-content-between link-item'>
-                                        <p>My Message</p>
-                                        <i className="fas fa-long-arrow-alt-right"></i>
-                                    </div>
-                                </Link>
-                            </div>
-                            {true && <div>
+                                    <Link to='/dashboard/userPost' onClick={() => setTile('My Post ')}>
+                                        <div className='d-flex align-items-center justify-content-between link-item'>
+                                            <p>My Post </p>
+                                            <i className="fas fa-long-arrow-alt-right"></i>
+                                        </div>
+                                    </Link>
+                                    <Link to='/dashboard/wishList' onClick={() => setTile('My Wish List')}>
+                                        <div className='d-flex align-items-center justify-content-between link-item'>
+                                            <p>My Wish List </p>
+                                            <i className="fas fa-long-arrow-alt-right"></i>
+                                        </div>
+                                    </Link>
+                                    <Link to='/dashboard/UserRequest' onClick={() => setTile('My Message')}>
+                                        <div className='d-flex align-items-center justify-content-between link-item'>
+                                            <p>My Message</p>
+                                            <i className="fas fa-long-arrow-alt-right"></i>
+                                        </div>
+                                    </Link>
+                                </div>
+                            }
+                            {load === 'admin' && <div>
                                 <Link to='/dashboard/users' onClick={() => setTile('All Users')}>
                                     <div className='d-flex align-items-center justify-content-between link-item'>
                                         <p>All Users</p>
@@ -72,7 +93,7 @@ const Dashboard = () => {
                             </div>}
                         </div>
                         <div className='col-12 col-md-9 '>
-                            <h5 className='fw-bold text-secondary mb-4'>{title}</h5>
+                            <h5 style={{ color: 'crimson' }} className='fw-bold mb-4'>{title}</h5>
                             <hr />
                             <Outlet />
                         </div>

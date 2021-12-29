@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 const Header = () => {
   const { logOut } = useAuth()
   const user = useSelector(state=> state.user.userAuth)
+  const admin = useSelector(state=> state.user.admin)
 
   return (
     <nav className="navbar px-0 mx-auto container navbar-expand-lg navbar-light ">
@@ -29,9 +30,9 @@ const Header = () => {
             <li className="nav-item">
               <HashLink  smooth to="/home#recent" className="nav-link active" aria-current="page">Recent</HashLink>
             </li>
-            <li className="nav-item">
-              <Link to='/dashboard/userPost' className="nav-link active" aria-current="page" href="#">My Account</Link>
-            </li>
+            {user.email && <li className="nav-item">
+              <Link to={`/dashboard/${admin ? 'users' :'userPost' }`} className="nav-link active" aria-current="page" href="#">My Account</Link>
+            </li>}
 
           </ul>
           <form class="">

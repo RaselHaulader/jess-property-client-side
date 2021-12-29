@@ -3,6 +3,7 @@ import { getAuth, updateProfile, signInWithEmailAndPassword, createUserWithEmail
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUserAuth, addUserAuth, handleLoading } from '../redux/slices/userSlices';
+import axios from "axios";
 firebaseInit()
 const auth = getAuth();
 const GoogleProvider = new GoogleAuthProvider();
@@ -33,12 +34,13 @@ const useFirebase = () => {
             if (user) {
                 console.log('stateChanged')
                 dispatch(addUserAuth(user))
+               
                 dispatch(handleLoading(false))
             } else {
                 dispatch(handleLoading(false))
             }
         });
-    }, [user])
+    }, [])
 
     return {
         googleSignIn,

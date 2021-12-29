@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Header from '../Header/Header';
 import './PropertyDetails.css';
 import axios from 'axios';
@@ -6,14 +6,14 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 const PropertyDetails = () => {
-    const user = useSelector(state=> state.user.userAuth)
+    const user = useSelector(state => state.user.userAuth)
     const [item, setItem] = useState({})
+    const msgRef = useRef()
     const { id } = useParams()
     useEffect(() => {
         axios.get(`https://secret-basin-56489.herokuapp.com/selectedItem/${id}`)
             .then(res => {
                 setItem(res.data)
-                console.log(res.data);
                 window.scrollTo({
                     top: 0,
                     left: 0,
@@ -21,9 +21,9 @@ const PropertyDetails = () => {
                 });
             })
     }, [])
-    
-    const addWish=()=>{
-        const data ={
+
+    const addWish = () => {
+        const data = {
             id: item._id,
             user: user.email,
             name: item.title,
@@ -38,6 +38,28 @@ const PropertyDetails = () => {
                 }
             })
     }
+    const handleMsg = () => {
+       
+       if (msgRef.current.value.length > 10) {
+        const data = {
+            message: msgRef.current.value,
+            from: user.email,
+            to: item.user,
+            postId : item._id,
+            propertyName : item.title,
+            time: new Date().toLocaleString()
+        }
+        axios.post('http://localhost:5000/addMsg', data)
+            .then(res => {
+                if (res.data.acknowledged) {
+                    window.alert('Success')
+                }
+            })
+       } else if(msgRef.current.value.length < 10){
+        window.alert('Massage should be minimum length 10 character')
+       }
+    }
+
     return (
         <div>
             <Header></Header>
@@ -99,8 +121,8 @@ const PropertyDetails = () => {
                                 <p><span className='fw-bold'>Phone:</span> {item?.phone}</p>
                             </div>
                             <p><span className='fw-bold'>Your Message</span></p>
-                            <textarea className='w-100' />
-                            <button className='w-100 my-3'>Send Message</button>
+                            <textarea placeholder='minimum 10 character' minLength='10' ref={msgRef} className='w-100' />
+                            <button onClick={handleMsg} className='w-100 my-3'>Send Message</button>
                         </div>
                     </div>
                 </div>

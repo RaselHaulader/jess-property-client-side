@@ -1,25 +1,29 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLoading2 } from '../../../../redux/slices/userSlices';
 import AllPropertyItem from '../../../AllProperties/AllPropertyItem';
-import UsersPostItem from './UsersPostItem';
 
 const UsersPosts = () => {
     const [items, setPost] = useState([])
+    const loading = useSelector(state => state.user.loading2)
+    const dispatch = useDispatch()
+
     const user = useSelector(state => state.user.userAuth)
     // get users post
     useEffect(() => {
-
-        axios.get(`http://localhost:5000/userPosts/${user.email}`)
+        dispatch(handleLoading2(true))
+        axios.get(`https://secret-basin-56489.herokuapp.com/userPosts/${user.email}`)
             .then(res => {
                 setPost(res.data)
                 console.log(res.data)
+                dispatch(handleLoading2(false))
             })
     }, [])
 
     const deletePost = (id) => {
         if (window.confirm('Sure?')) {
-            axios.post('http://localhost:5000/deletePost', { id })
+            axios.post('https://secret-basin-56489.herokuapp.com/deletePost', { id })
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const restPost = items.filter(post => post._id !== id)
@@ -27,15 +31,25 @@ const UsersPosts = () => {
                     }
                 })
         }
-
     }
     return (
         <div>
+            {
+                !loading && items.length === 0 && <h3 className='text-center'>You Have No Post</h3>
+            }
+            {
+                loading  &&
+                    <div class="text-center text-primary">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+            }
             <div className='items-container'>
-                {
-                    items.map(item => <AllPropertyItem deletePost={deletePost} items={item}></AllPropertyItem>)
-                }
 
+                {
+                    items.length !== 0 && items.map(item => <AllPropertyItem deletePost={deletePost} items={item}></AllPropertyItem>)
+                }
             </div>
         </div>
     );

@@ -34,7 +34,8 @@
     margin: 4px 0;
 }
 .link-item:hover{
-    background-color: rgba(226, 226, 226, 0.767);
+    background-color:crimson;
+    color: white;
 }
 /* .link-container a:nth-child(2){
       border-top: 1px solid rgba(214, 212, 212, 0.836);

@@ -2,17 +2,18 @@ import React from 'react';
 import './BannerStyle.css';
 import banner from '../../images/bannerbg.png'
 import Header from '../Header/Header';
+import { Link } from 'react-router-dom';
 const Banner = () => {
     return (
         <div style={{ backgroundImage: `url(${banner})` }} className='banner-container d-flex align-items-center'>
             <div className='banner-input-container pb-5 w-100'>
                 <Header></Header>
-               <div className='container'>
-               <hr />
-               </div>
+                <div className='container'>
+                    <hr />
+                </div>
                 <div className='row h-100 pb-5 align-items-center p-0 m-0'>
                     <div className='col-12 col-md-6 text-white ps-5'>
-                        <h1>Find Your <br/> Dream Property </h1>
+                        <h1>Find Your <br /> Dream Property </h1>
                         <p>Make your life easy and beautiful by</p>
                     </div>
                     <div className='col-12 col-md-6'>
@@ -44,7 +45,7 @@ const Banner = () => {
 
                             <div>
                                 <label style={{ color: 'transparent' }} htmlFor=""> btn</label> <br />
-                                <button className='btn w-100 btn-danger'>Find Property</button>
+                                <Link to='/allProperty'> <button className='btn w-100 btn-danger'>Find Property</button></Link>
                             </div>
                         </div>
                     </div>
