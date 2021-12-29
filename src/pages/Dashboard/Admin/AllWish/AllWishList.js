@@ -12,7 +12,7 @@ const AllWishList = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(handleLoading2(false))
-    axios.get(`http://localhost:5000/getAllWish`)
+    axios.get(`https://secret-basin-56489.herokuapp.com/getAllWish`)
       .then(res => {
         setWish(res.data)
         dispatch(handleLoading2(true))

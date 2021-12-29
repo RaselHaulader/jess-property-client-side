@@ -14,7 +14,7 @@ const Dashboard = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        axios(`http://localhost:5000/checkUsers/${user.email}`)
+        axios(`https://secret-basin-56489.herokuapp.com/checkUsers/${user.email}`)
             .then(res => {
                 console.log(res)
                 if (res.data[0].role === 'admin') {

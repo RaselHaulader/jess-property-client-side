@@ -11,7 +11,7 @@ const AllUser = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(handleLoading2(false))
-    axios.get(`http://localhost:5000/allUsers`)
+    axios.get(`https://secret-basin-56489.herokuapp.com/allUsers`)
       .then(res => {
         setUsers(res.data)
         dispatch(handleLoading2(true))
@@ -20,7 +20,7 @@ const AllUser = () => {
 
   const deleteUser = (id) => {
     if (window.confirm('Sure?')) {
-      axios.post('http://localhost:5000/deleteUser', { id })
+      axios.post('https://secret-basin-56489.herokuapp.com/deleteUser', { id })
         .then(res => {
           if (res.data.deletedCount > 0) {
             const restUser = users.filter(user => user._id !== id)

@@ -24,77 +24,94 @@ import AllRequest from './pages/Dashboard/Admin/AllRequest/AllRequest';
 import AllWishList from './pages/Dashboard/Admin/AllWish/AllWishList';
 import UserProfile from './pages/Dashboard/User/UserProfile/UserProfile';
 import useAuth from './Hooks/useAuth';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleAdmin } from './redux/slices/userSlices';
 
 
 function App() {
-  const {logOut} = useAuth()
+  const { logOut } = useAuth()
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user.userAuth)
+  useEffect(() => {
+    axios(`https://secret-basin-56489.herokuapp.com/checkUsers/${user.email}`)
+      .then(res => {
+        console.log(res)
+        if (res.data[0]?.role === 'admin') {
+          dispatch(handleAdmin('admin'))
+        } else {
+          dispatch(handleAdmin('user'))
+        }
+      })
+  }, [user])
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/allProperty" element={<AllPropertyPage />} />
-          <Route path="/details/:id" element={
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/allProperty" element={<AllPropertyPage />} />
+        <Route path="/details/:id" element={
+          <RequireAuth>
+            <PropertyDetails></PropertyDetails>
+          </RequireAuth>
+        } />
+        <Route path="/addProperty" element={
+          <RequireAuth>
+            <AddProperty></AddProperty>
+          </RequireAuth>
+        } />
+        <Route path="/dashboard" element={
+          <RequireAuth>
+            <Dashboard></Dashboard>
+          </RequireAuth>
+        } >
+          <Route path="/dashboard/userProfile" element={
             <RequireAuth>
-              <PropertyDetails></PropertyDetails>
-            </RequireAuth>
-          } />
-          <Route path="/addProperty" element={
-            <RequireAuth>
-              <AddProperty></AddProperty>
-            </RequireAuth>
-          } />
-          <Route path="/dashboard" element={
-            <RequireAuth>
-              <Dashboard></Dashboard>
-            </RequireAuth>
-          } >
-            <Route path="/dashboard/userProfile" element={
-              <RequireAuth>
               <UserProfile></UserProfile>
-              </RequireAuth>
-            } />
-            <Route path="/dashboard/userPost" element={
-              <RequireAuth>
-                <UsersPosts></UsersPosts>
-              </RequireAuth>
-            } />
-            <Route path="/dashboard/wishList" element={
-              <RequireAuth>
-                <UsersWishList></UsersWishList>
-              </RequireAuth>
-            } />
-            <Route path="/dashboard/UserRequest" element={
-              <RequireAuth>
-                <UserRequest></UserRequest>
-              </RequireAuth>
-            } />
-            <Route path="/dashboard/users" element={
-              <AdminRoute>
-                <AllUser></AllUser>
-              </AdminRoute>
-            } />
-            <Route path="/dashboard/allPost" element={
-              <AdminRoute>
-                <AllPosts></AllPosts>
-              </AdminRoute>
-            } />
-            <Route path="/dashboard/allRequest" element={
-              <AdminRoute>
-                <AllRequest></AllRequest>
-              </AdminRoute>
-            } />
-            <Route path="/dashboard/allWishList" element={
-              <AdminRoute>
-                <AllWishList></AllWishList>
-              </AdminRoute>
-            } />
+            </RequireAuth>
+          } />
+          <Route path="/dashboard/userPost" element={
+            <RequireAuth>
+              <UsersPosts></UsersPosts>
+            </RequireAuth>
+          } />
+          <Route path="/dashboard/wishList" element={
+            <RequireAuth>
+              <UsersWishList></UsersWishList>
+            </RequireAuth>
+          } />
+          <Route path="/dashboard/UserRequest" element={
+            <RequireAuth>
+              <UserRequest></UserRequest>
+            </RequireAuth>
+          } />
+          <Route path="/dashboard/users" element={
+            <AdminRoute>
+              <AllUser></AllUser>
+            </AdminRoute>
+          } />
+          <Route path="/dashboard/allPost" element={
+            <AdminRoute>
+              <AllPosts></AllPosts>
+            </AdminRoute>
+          } />
+          <Route path="/dashboard/allRequest" element={
+            <AdminRoute>
+              <AllRequest></AllRequest>
+            </AdminRoute>
+          } />
+          <Route path="/dashboard/allWishList" element={
+            <AdminRoute>
+              <AllWishList></AllWishList>
+            </AdminRoute>
+          } />
 
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

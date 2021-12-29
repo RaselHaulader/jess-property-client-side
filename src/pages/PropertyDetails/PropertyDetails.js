@@ -31,7 +31,7 @@ const PropertyDetails = () => {
             category: item.category,
             PropertyType: item.PropertyType
         }
-        axios.post('http://localhost:5000/addWish', data)
+        axios.post('https://secret-basin-56489.herokuapp.com/addWish', data)
             .then(res => {
                 if (res.data.acknowledged) {
                     window.alert('Success')
@@ -49,7 +49,7 @@ const PropertyDetails = () => {
             propertyName : item.title,
             time: new Date().toLocaleString()
         }
-        axios.post('http://localhost:5000/addMsg', data)
+        axios.post('https://secret-basin-56489.herokuapp.com/addMsg', data)
             .then(res => {
                 if (res.data.acknowledged) {
                     window.alert('Success')
