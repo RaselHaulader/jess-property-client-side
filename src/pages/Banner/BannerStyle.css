@@ -13,3 +13,7 @@
     background-color: rgba(0, 0, 0, 0.507);
     border-radius: 10px;
 }
+
+.banner-details{
+     border-right:3px solid rgba(150, 150, 150, 0.397);
+}

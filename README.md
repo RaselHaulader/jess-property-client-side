@@ -15,6 +15,9 @@ Visit this site to learn more [Property Bazar](https://property-bazar-8a4ae.web.
 - user and admin shows different type options  in dashboard
 - from dashboard users will be able to see all their posts and requests and be able to manage them.
 
+## Login as admin for check admin role 
+- email: admin@admin.com
+- pass : 123456
 
 ## The technology with which the site has been built
 - html 
