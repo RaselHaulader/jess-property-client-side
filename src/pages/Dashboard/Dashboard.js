@@ -28,10 +28,9 @@ const Dashboard = () => {
     },[user])
     return (
         <div>
-            <div className='container'>
-                <Header></Header>
-                <hr />
-                <div className='p-3'>
+            <div className='container pt-5'>
+               
+                <div className='p-3 mt-5'>
                     <div className='dashboardContainer row'>
                         <div className='col-12 col-md-3 link-container'>
                             <h5 className='fw-bold mb-4' style={{ color: 'crimson' }}>My Account</h5>

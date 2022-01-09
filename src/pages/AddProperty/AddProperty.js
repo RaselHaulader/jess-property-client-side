@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import Header from '../Header/Header';
 import './AddPropertyStyle.css';
 import axios from 'axios'
 import Footer from '../Footer/Footer';
 import { useSelector } from 'react-redux';
 const AddProperty = () => {
+
     // user from redux store
-    const user = useSelector(state=> state.user.userAuth)
+    const user = useSelector(state => state.user.userAuth)
+  
     // handle submit
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -31,10 +31,8 @@ const AddProperty = () => {
     }
     return (
         <div>
-            <Header></Header>
-            <div className='container text-secondary'>
-                <hr />
-                <div>
+            <div className='container text-secondary pt-5'>
+                <div className='mt-4'>
                     <p>Home &gt; <span className='text-danger'> Add Property</span></p>
                 </div>
                 <h3>Add Property</h3>

@@ -1,0 +1,36 @@
+.searchBar{
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: rgb(243, 70, 104);
+    padding:6px 0px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+.searchBar input{
+    background-color: white;
+    border-radius: 10px;
+    border:  2px solid  rgb(255, 255, 255);
+   margin: auto;
+    width: 90%;
+    outline: none;
+    color: rgba(134, 134, 134, 0.897);
+    
+}
+.searchBar i{
+    position: absolute;
+    right:5px;
+    color: rgb(243, 70, 104);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 20px;
+}
+.navbar-container{
+    position:fixed;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    right: 0;
+   
+    border-bottom:1px solid rgba(134, 134, 134, 0.197);
+}

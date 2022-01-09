@@ -6,6 +6,7 @@ const userSlice = createSlice({
       userAuth : [],
       loading: true,
       loading2: true,
+      loading3: false,
       admin: 'initial',
      },
      reducers:{
@@ -19,6 +20,9 @@ const userSlice = createSlice({
            state.loading = action.payload
         },
         handleLoading2: (state, action) =>{
+           state.loading2 = action.payload
+        },
+        handleLoading3: (state, action) =>{
            state.loading2 = action.payload
         },
         handleAdmin: (state, action) =>{

@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AllPropertyItem = ({ items, deletePost }) => {
-    console.log(items)
     return (
 
         <Link className='text-decoration-none' to={deletePost ? '':`/details/${items?._id}`}>

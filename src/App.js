@@ -5,7 +5,8 @@ import { render } from "react-dom";
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  useNavigate
 } from "react-router-dom";
 import NotFound from './pages/NotFound/NotFound';
 import Login from './pages/Login/Login';
@@ -27,7 +28,8 @@ import useAuth from './Hooks/useAuth';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { handleAdmin } from './redux/slices/userSlices';
+import { handleAdmin, handleLoading } from './redux/slices/userSlices';
+import Header from './pages/Header/Header';
 
 
 function App() {
@@ -45,8 +47,11 @@ function App() {
         }
       })
   }, [user])
+  
+
   return (
     <BrowserRouter>
+      <Header ></Header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

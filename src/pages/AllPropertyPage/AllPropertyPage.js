@@ -9,19 +9,15 @@ const AllPropertyPage = () => {
     useEffect(() => {
         axios('https://secret-basin-56489.herokuapp.com/allProperties')
             .then(res => {
-                console.log(res.data);
                 setItems(res.data)
             })
 
 
     }, [])
     return (
-        <div style={{ maxWidth: '1200px', margin: 'auto' }}>
-            <Header></Header>
-            <div className='px-5'>
-                <hr />
-            </div>
-            <div className='row w-100 filter-section'>
+        <div className='pt-5' style={{ maxWidth: '1200px', margin: 'auto' }}>
+           
+            <div className='row w-100 filter-section mt-5'>
                 <div className='col-12 col-md-4 px-5 '>
                     <div>
                         <h3 className='p-0 m-0'>Filter</h3>

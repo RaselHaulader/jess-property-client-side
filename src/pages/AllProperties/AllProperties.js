@@ -9,7 +9,6 @@ const AllProperties = () => {
     useEffect(() => {
         axios('https://secret-basin-56489.herokuapp.com/allProperties4')
             .then(res => {
-                console.log(res.data);
                 setItems(res.data)
             })
     }, [])

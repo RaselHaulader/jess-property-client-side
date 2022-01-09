@@ -104,7 +104,6 @@ const Login = () => {
     };
     return (
         <div className='container '>
-            <Header></Header>
             <hr />
             <h3 className='text-center mt-5'>Login</h3>
             <div>

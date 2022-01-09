@@ -10,11 +10,8 @@ const AddedTodays = () => {
     useEffect(() => {
         axios('https://secret-basin-56489.herokuapp.com/allProperties3')
             .then(res => {
-                console.log(res.data);
                 setItems(res.data)
             })
-
-
     }, [])
     return (
         <div id="recent" className='container pb-5 pt-1 my-5'>

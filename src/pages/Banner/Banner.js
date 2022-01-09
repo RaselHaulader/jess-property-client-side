@@ -7,9 +7,8 @@ const Banner = () => {
     return (
         <div style={{ backgroundImage: `url(${banner})` }} className='banner-container d-flex align-items-center'>
         <div className='banner-input-container pb-5 w-100'>
-            <Header></Header>
+           
             <div className='container'>
-                <hr />
             </div>
             <div className='row h-100 pb-5 align-items-center p-0 m-0'>
                 <div className='col-12 col-md-6 text-white ps-5'>

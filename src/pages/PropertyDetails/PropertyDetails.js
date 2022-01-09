@@ -38,8 +38,7 @@ const PropertyDetails = () => {
                 }
             })
     }
-    const handleMsg = () => {
-       
+    const handleMsg = () => {     
        if (msgRef.current.value.length > 10) {
         const data = {
             message: msgRef.current.value,
@@ -59,18 +58,14 @@ const PropertyDetails = () => {
         window.alert('Massage should be minimum length 10 character')
        }
     }
-
     return (
-        <div>
-            <Header></Header>
+        <div className='pt-5'>
 
-            <div className='container'>
-                <hr />
+            <div className='mt-5 container'>
                 <div className=' justify-content-between'>
                     <p>Home &gt; Property for  <span>{item?.category}</span> &gt;  <span className='text-danger'> {item?.title}</span></p>
                     <p className='text-secondary m-0 pt-0'><small>Posted : {item?.date}</small></p>
                 </div>
-
                 <div className='row w-100 px-0 mx-0'>
                     <div className='col-8 ps-0 h-100'>
                         <img width='100%' height='100%' style={{ borderRadius: '10px' }} src={item?.img1} alt="" />
