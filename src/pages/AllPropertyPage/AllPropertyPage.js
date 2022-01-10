@@ -1,65 +1,105 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import AllPropertyItem from '../AllProperties/AllPropertyItem';
 import './AllPropertyPageStyle.css'
-import Header from '../Header/Header';
 import axios from 'axios';
 import Footer from '../Footer/Footer';
+import { useSearchParams } from 'react-router-dom';
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
+const { Range } = Slider;
 const AllPropertyPage = () => {
+
+    
     const [items, setItems] = useState([])
+    const [filterData, setFilterData] = useState({})
+    const [rangeValue, setRangeValue] = useState([0,10000000])
+    let [searchParams, setSearchParams] = useSearchParams();
+    const categoryRef = useRef()
+    const locationRef = useRef()
+    const typeRef = useRef()
+  
+  // range value
+    const log=(e)=> {
+        setRangeValue([e[0]*100000 , e[1]*100000]); //eslint-disable-line
+    }
+
+    const handleFilter = () => {
+        const selectedFilterData = {
+                 priceRange : [...rangeValue]
+        }
+        categoryRef.current.value !== '' && (selectedFilterData.category = categoryRef.current.value)
+        locationRef.current.value !== '' && (selectedFilterData.district = locationRef.current.value)
+        typeRef.current.value !== '' && (selectedFilterData.PropertyType = typeRef.current.value)
+        console.log(selectedFilterData);
+        setFilterData(selectedFilterData);
+    }
+    
+    const serch = searchParams.get('category')
     useEffect(() => {
-        axios('https://secret-basin-56489.herokuapp.com/allProperties')
+        console.log(serch);
+        axios.post('http://localhost:5000/filter', filterData)
             .then(res => {
+                console.log(res.data);
                 setItems(res.data)
             })
-    }, [])
+    }, [filterData])
     return (
         <div className='pt-5' style={{ maxWidth: '1200px', margin: 'auto' }}>
-           
+
             <div className='row w-100 filter-section mt-5'>
                 <div className='col-12 col-md-4 px-5 '>
                     <div>
                         <h3 className='p-0 m-0'>Filter</h3>
                         <hr />
                         <label htmlFor="">Category </label><br />
-                        <select className='w-100'>
-                            <option value="">For Sell</option>
-                            <option value="">For Rent</option>
+                        <select onChange={handleFilter} ref={categoryRef} className='w-100'>
+                            <option value="">Select</option>
+                            <option value="For Sell">For Sell</option>
+                            <option value="For Rent">For Rent</option>
                         </select>
                     </div>
                     <div>
                         <div>
                             <label htmlFor="">Location</label><br />
-                            <select className='w-100'>
-                                <option value="">Jashore</option>
-                                <option value="">Khulna</option>
-                                <option value="">Jhenidah</option>
-                                <option value="">Narail</option>
-                                <option value="">Magura</option>
-                                <option value="">Kustia</option>
-                                <option value="">Meherpur</option>
-                                <option value="">Bagerhat</option>
+                            <select onChange={handleFilter} ref={locationRef} className='w-100'>
+                                <option value="">Select</option>
+                                <option value="Jashore">Jashore</option>
+                                <option value="Khulna">Khulna</option>
+                                <option value="Jhenidah">Jhenidah</option>
+                                <option value="Narail">Narail</option>
+                                <option value="Magura">Magura</option>
+                                <option value="Kustia">Kustia</option>
+                                <option value="Meherpur">Meherpur</option>
+                                <option value="Bagerhat">Bagerhat</option>
                             </select>
                         </div>
                     </div>
                     <div>
                         <label htmlFor="">Property Type </label><br />
-                        <select className='w-100'>
-                            <option value="">Apartment</option>
-                            <option value="">Home</option>
-                            <option value="">Land</option>
-                            <option value="">Shop</option>
-                            <option value="">Office</option>
-                            <option value="">Commercial</option>
+                        <select onChange={handleFilter} ref={typeRef} className='w-100'>
+                            <option value="">Select</option>
+                            <option value="Apartment">Apartment</option>
+                            <option value="Home">Home</option>
+                            <option value="Land">Land</option>
+                            <option value="Shop">Shop</option>
+                            <option value="Office">Office</option>
+                            <option value="Commercial">Commercial</option>
                         </select>
                     </div>
                     <div className='priceRange'>
-                        <label htmlFor="">Price Range</label> <br />
+                        <label htmlFor="" className='d-flex justify-content-between'>Price Range <span>{rangeValue[0] + ' - ' + rangeValue[1]} Tk</span></label> <br />
                         <div d-flex>
-                            <input className='w-50' placeholder=' min' type="number" />
-                            <input placeholder=' max' className='w-50' type="number" />
+
+                            <Range
+                                allowCross={true}
+                                draggableTrack onChange={log}
+                                defaultValue={[0, 100]}
+                                trackStyle={[{ backgroundColor: 'tomato' }]}
+                            />
+
                         </div>
                     </div>
-                    <button className='w-100 my-3 applyFilter'>Apply Filter</button>
+                    <button onClick={handleFilter} className='w-100 my-3 applyFilter'>Apply Filter</button>
                 </div>
                 <div className='col-12 col-md-8 px-5 pt-0 mt-0 propertyPageItems'>
                     <div>
@@ -74,8 +114,10 @@ const AllPropertyPage = () => {
                             </select>
                         </div>
                     </div>
+                    {items.length === 0 && <h5 className='text-center my-5 text-danger'>No Result Found</h5>}
                     <div className='allPropertyPageProperties mt-3'>
-                        { items.map(item => <AllPropertyItem key={item._id} items={item} />) }
+
+                        {items.map(item => <AllPropertyItem key={item._id} items={item} />)}
                     </div>
                 </div>
             </div>

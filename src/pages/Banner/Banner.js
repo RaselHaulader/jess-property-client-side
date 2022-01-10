@@ -2,8 +2,17 @@ import React from 'react';
 import './BannerStyle.css';
 import banner from '../../images/bannerbg.png'
 import Header from '../Header/Header';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { useRef } from 'react';
+
 const Banner = () => {
+    const navigate = useNavigate()
+    let [searchParams, setSearchParams] = useSearchParams();
+    const categoryRef = useRef()
+    const handleFilter =()=>{
+         setSearchParams({category : categoryRef.current.value})
+         navigate('/allProperty')
+    }
     return (
         <div style={{ backgroundImage: `url(${banner})` }} className='banner-container d-flex align-items-center'>
         <div className='banner-input-container pb-5 w-100'>
@@ -19,13 +28,14 @@ const Banner = () => {
                     <div className='input-container w-75 mx-auto p-5'>
                         <div>
                             <label className='mb-1 text-danger' htmlFor="">Property Type</label><br />
-                            <select className=' w-100'>
-                                <option value="">Apartment</option>
-                                <option value="">Home</option>
-                                <option value="">Land</option>
-                                <option value="">Shop</option>
-                                <option value="">Office</option>
-                                <option value="">Commercial</option>
+                            <select ref={categoryRef} className=' w-100'>
+                                <option value="">Select</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Home">Home</option>
+                                <option value="Land">Land</option>
+                                <option value="Shop">Shop</option>
+                                <option value="Office">Office</option>
+                                <option value="Commercial">Commercial</option>
                             </select>
                         </div>
                         <div>
@@ -44,7 +54,7 @@ const Banner = () => {
 
                         <div>
                             <label style={{ color: 'transparent' }} htmlFor=""> btn</label> <br />
-                            <Link to='/allProperty'> <button className='btn w-100 btn-danger'>Find Property</button></Link>
+                            <button onClick={handleFilter} className='btn w-100 btn-danger'>Find Property</button>
                         </div>
                     </div>
                 </div>
