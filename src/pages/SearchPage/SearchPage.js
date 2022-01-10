@@ -14,7 +14,7 @@ const SearchPage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         setLoad(true)
-        axios.post('http://localhost:5000/serachProperties', { searchKeyword })
+        axios.post('https://secret-basin-56489.herokuapp.com/serachProperties', { searchKeyword })
             .then(res => {
                 setProperties(res.data);
                 setLoad(false)
