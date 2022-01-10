@@ -9,23 +9,22 @@ import 'rc-slider/assets/index.css';
 const { Range } = Slider;
 const AllPropertyPage = () => {
 
-    
+
     const [items, setItems] = useState([])
-    const [filterData, setFilterData] = useState({})
-    const [rangeValue, setRangeValue] = useState([0,10000000])
-    let [searchParams, setSearchParams] = useSearchParams();
+    const [filterData, setFilterData] = useState({ priceRange: [0, 10000000] })
+    const [rangeValue, setRangeValue] = useState([0, 10000000])
     const categoryRef = useRef()
     const locationRef = useRef()
     const typeRef = useRef()
-  
-  // range value
-    const log=(e)=> {
-        setRangeValue([e[0]*100000 , e[1]*100000]); //eslint-disable-line
-    }
 
+    // range value
+    const log = (e) => {
+        setRangeValue([e[0] * 100000, e[1] * 100000]);
+    }
+    // send filter type to db
     const handleFilter = () => {
         const selectedFilterData = {
-                 priceRange : [...rangeValue]
+            priceRange: [...rangeValue]
         }
         categoryRef.current.value !== '' && (selectedFilterData.category = categoryRef.current.value)
         locationRef.current.value !== '' && (selectedFilterData.district = locationRef.current.value)
@@ -33,10 +32,9 @@ const AllPropertyPage = () => {
         console.log(selectedFilterData);
         setFilterData(selectedFilterData);
     }
-    
-    const serch = searchParams.get('category')
+    // search data by filtered criteria
     useEffect(() => {
-        console.log(serch);
+
         axios.post('http://localhost:5000/filter', filterData)
             .then(res => {
                 console.log(res.data);
