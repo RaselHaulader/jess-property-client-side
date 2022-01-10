@@ -222,6 +222,9 @@ text-decoration: none;
     justify-content: space-evenly;
     color: rgba(89, 89, 114, 0.884);
 }
+.card-footers small{
+    font-size: 11px;
+}
 
 @media only screen and (min-width: 200px) and (max-width: 600px)  {
     .catagory-body{

@@ -11,8 +11,6 @@ const AllPropertyPage = () => {
             .then(res => {
                 setItems(res.data)
             })
-
-
     }, [])
     return (
         <div className='pt-5' style={{ maxWidth: '1200px', margin: 'auto' }}>

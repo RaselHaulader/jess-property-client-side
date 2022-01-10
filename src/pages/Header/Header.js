@@ -3,14 +3,19 @@ import logo from '../../images/logo.png';
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth';
 import { HashLink } from 'react-router-hash-link';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './Header.css';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { addProperty } from '../../redux/slices/propertySlice';
+import { useRef } from 'react';
 const Header = () => {
+  const searchRef = useRef()
   const { logOut } = useAuth()
   const user = useSelector(state => state.user.userAuth)
   const admin = useSelector(state => state.user.admin)
+  const value = useSelector(state => state.properties.searchProperties)
+  const navigate = useNavigate()
   const [colorChange, setColorchange] = useState(false);
 
 //nav bar color change
@@ -31,12 +36,12 @@ const Header = () => {
     backgroundColor: 'rgba(250 , 250, 250, 0)',
     transition:' all 1s'
   }
-
- const navigate = useNavigate()
   // search func
+  const dispatch = useDispatch()
   const handleSearch=()=>{
     console.log('test');
-    navigate('/allProperty');
+    navigate('/search');
+    dispatch(addProperty(searchRef.current.value))
   }
   return (
     <div className="navbar-container" style={colorChange ? setNavBg : setNavBg2}>
@@ -69,7 +74,7 @@ const Header = () => {
                 <p className='my-0 py-0'>{user.email ? <> {user.photoURL ? <img width='30px' style={{ borderRadius: '50%' }} src={user.photoURL} alt="" /> : <span className='fw-bold text-dark'>{user.displayName}</span>}  </> : ' '} </p>
                 <li className='nav-item searchBar'>
                   <i class="fas fa-search"></i>
-                  <input onChange={handleSearch} placeholder='search' type="text" />
+                  <input ref={searchRef} onChange={handleSearch} value={value} placeholder='search' type="text" />
                 </li>
                 <Link to='/addProperty' className='me-2'> <span style={{ fontSsize: "20px" }} >+</span> Add Property</Link>
                 {user.email ? <p className='my-0 py-0'> <span style={{ cursor: 'pointer' }} onClick={() => logOut()}> <i className="fas fa-sign-out-alt"></i></span></p> : <Link to='/login'> <i className="fas fa-sign-in-alt"></i> Sign in</Link>}

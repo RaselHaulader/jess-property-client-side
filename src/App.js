@@ -30,6 +30,7 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleAdmin, handleLoading } from './redux/slices/userSlices';
 import Header from './pages/Header/Header';
+import SearchPage from './pages/SearchPage/SearchPage';
 
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/allProperty" element={<AllPropertyPage />} />
         <Route path="/details/:id" element={
           <RequireAuth>
