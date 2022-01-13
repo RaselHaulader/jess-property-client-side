@@ -46,7 +46,7 @@ const Login = () => {
             // redirect after login
             navigate(from, { replace: true });
         }).catch((error) => {
-            console.log(error);
+            window.alert(error.message)
         });
     }
     // email login
@@ -60,7 +60,7 @@ const Login = () => {
                 navigate(from, { replace: true });
             })
             .catch((error) => {
-                console.log(error);
+                window.alert(error.message)
             });
     }
     // register user
@@ -78,7 +78,7 @@ const Login = () => {
                     dispatch(addUserAuth(user))
                     setToggle(false)
                 }).catch((error) => {
-
+                    window.alert(error.message)
                 })
             })
             .catch((error) => {
