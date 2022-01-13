@@ -27,7 +27,7 @@ const Login = () => {
 
     //save user data to db
     const saveUserInfo = (data) => {
-        axios.post('http://localhost:5000/saveUser', data)
+        axios.post('https://secret-basin-56489.herokuapp.com/saveUser', data)
             .then(res => console.log(res))
     }
 
