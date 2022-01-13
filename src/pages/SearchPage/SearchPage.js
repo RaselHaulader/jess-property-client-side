@@ -25,12 +25,11 @@ const SearchPage = () => {
     useEffect(() => {
         return () => {
             dispatch(addProperty(''))
-            console.log('hello');
         }
     }, [])
     return (
         <div className='pt-5'>
-            <div className='mt-5'>
+            <div className='mt-5 mx-3'>
                 {load ? <h4 className='text-center text-danger'>Searching...</h4> :
                     <div className='propertiesResults px-4'>
                         {properties.map(item => <AllPropertyItem key={item._id} items={item} />)}
