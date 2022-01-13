@@ -11,6 +11,7 @@ const PropertyDetails = () => {
     const msgRef = useRef()
     const { id } = useParams()
     useEffect(() => {
+        window.scroll(0,0)
         axios.get(`https://secret-basin-56489.herokuapp.com/selectedItem/${id}`)
             .then(res => {
                 setItem(res.data)

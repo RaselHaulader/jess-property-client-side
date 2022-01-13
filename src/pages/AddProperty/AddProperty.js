@@ -2,11 +2,14 @@ import './AddPropertyStyle.css';
 import axios from 'axios'
 import Footer from '../Footer/Footer';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 const AddProperty = () => {
 
     // user from redux store
     const user = useSelector(state => state.user.userAuth)
-  
+    useEffect(()=>{
+        window.scroll(0,0)
+    },[])
     // handle submit
     const handleSubmit = (e) => {
         e.preventDefault()

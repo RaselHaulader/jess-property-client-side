@@ -35,6 +35,7 @@ const AllPropertyPage = () => {
     }
     // search data by filtered criteria
     useEffect(() => {
+        window.scroll(0,0)
         setLoading(true)
         axios.post('https://secret-basin-56489.herokuapp.com/filter', filterData)
             .then(res => {

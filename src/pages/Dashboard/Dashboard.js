@@ -14,6 +14,7 @@ const Dashboard = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
+        window.scroll(0,0)
         axios(`https://secret-basin-56489.herokuapp.com/checkUsers/${user.email}`)
             .then(res => {
                 console.log(res)
