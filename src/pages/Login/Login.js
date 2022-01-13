@@ -103,8 +103,8 @@ const Login = () => {
         // reset()
     };
     return (
-        <div className='container '>
-            <hr />
+        <div className='container pt-5'>
+         
             <h3 className='text-center mt-5'>Login</h3>
             <div>
                 <form className='form-body d-flex flex-column align-items-center' onSubmit={handleSubmit(onSubmit)}>

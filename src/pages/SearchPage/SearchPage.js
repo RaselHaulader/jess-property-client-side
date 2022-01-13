@@ -29,7 +29,7 @@ const SearchPage = () => {
         }
     }, [])
     return (
-        <div className='pt-4'>
+        <div className='pt-5'>
             <div className='mt-5'>
                 {load ? <h3 className='text-center'>Searching...</h3> :
                     <div className='propertiesResults px-4'>
