@@ -54,7 +54,7 @@ const AllPropertyPage = () => {
                         <hr />
                         <label htmlFor="">Category </label><br />
                         <select onChange={handleFilter} ref={categoryRef} className='w-100'>
-                            <option value="">Select</option>
+                            <option value="">All Category</option>
                             <option value="For Sell">For Sell</option>
                             <option value="For Rent">For Rent</option>
                         </select>
@@ -63,7 +63,7 @@ const AllPropertyPage = () => {
                         <div>
                             <label htmlFor="">Location</label><br />
                             <select onChange={handleFilter} ref={locationRef} className='w-100'>
-                                <option value="">Select</option>
+                                <option value="">All Location</option>
                                 <option value="Jashore">Jashore</option>
                                 <option value="Khulna">Khulna</option>
                                 <option value="Jhenidah">Jhenidah</option>
@@ -78,7 +78,7 @@ const AllPropertyPage = () => {
                     <div>
                         <label htmlFor="">Property Type </label><br />
                         <select onChange={handleFilter} ref={typeRef} className='w-100'>
-                            <option value="">Select</option>
+                            <option value="">All Type</option>
                             <option value="Apartment">Apartment</option>
                             <option value="Home">Home</option>
                             <option value="Land">Land</option>
