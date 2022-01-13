@@ -5,7 +5,6 @@
       margin-bottom: 50px;
 }
 .profile-container p{
-    border-bottom: 1px solid rgba(145, 142, 142, 0.534);
     max-width: 400px;
     margin: auto;
     font-size: 20px;
@@ -13,4 +12,7 @@
     color: gray;
     font-weight: 500;
     margin-bottom: 10px;
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.267);
 }
