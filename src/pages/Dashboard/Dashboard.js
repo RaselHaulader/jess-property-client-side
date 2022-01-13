@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Outlet } from 'react-router-dom';
 import { handleAdmin } from '../../redux/slices/userSlices';
 import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import './DashBoardStyle.css';
 
 const Dashboard = () => {
@@ -18,7 +17,7 @@ const Dashboard = () => {
         axios(`https://secret-basin-56489.herokuapp.com/checkUsers/${user.email}`)
             .then(res => {
                 console.log(res)
-                if (res.data[0].role === 'admin') {
+                if (res?.data[0]?.role === 'admin') {
                     setLoad('admin')
                     dispatch(handleAdmin(true))
                 } else {
@@ -36,16 +35,15 @@ const Dashboard = () => {
                         <div className='col-12 col-md-3 link-container'>
                             <h5 className='fw-bold mb-4' style={{ color: 'crimson' }}>My Account</h5>
                             <hr />
-                                    <Link to='/dashboard/userProfile' onClick={() => setTile('My Profile')}>
-                                        <div className='d-flex align-items-center justify-content-between link-item'>
-                                            <p>My Profile </p>
-                                            <i className="fas fa-long-arrow-alt-right"></i>
-                                        </div>
-                                    </Link>
+                            <Link to='/dashboard/userProfile' onClick={() => setTile('My Profile')}>
+                                <div className='d-flex align-items-center justify-content-between link-item'>
+                                    <p>My Profile </p>
+                                    <i className="fas fa-long-arrow-alt-right"></i>
+                                </div>
+                            </Link>
                             {
+                                load === 'user' && <div className=''>
 
-                                load === 'user' && 
-                                <div className=''>
                                     <Link to='/dashboard/userPost' onClick={() => setTile('My Post ')}>
                                         <div className='d-flex align-items-center justify-content-between link-item'>
                                             <p>My Post </p>

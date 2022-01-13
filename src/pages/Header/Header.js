@@ -18,7 +18,7 @@ const Header = () => {
   const navigate = useNavigate()
   const [colorChange, setColorchange] = useState(false);
 
-//nav bar color change
+  //nav bar color change
   useEffect(() => {
     console.log(colorChange);
     window.onscroll = () => {
@@ -34,11 +34,11 @@ const Header = () => {
   }
   const setNavBg2 = {
     backgroundColor: 'rgba(250 , 250, 250, 0)',
-    transition:' all 1s'
+    transition: ' all 1s'
   }
   // search func
   const dispatch = useDispatch()
-  const handleSearch=()=>{
+  const handleSearch = () => {
     console.log('test');
     navigate('/search');
     dispatch(addProperty(searchRef.current.value))
@@ -65,9 +65,11 @@ const Header = () => {
               <li className="nav-item">
                 <HashLink smooth to="/home#recent" className="nav-link active" aria-current="page">Recent</HashLink>
               </li>
-             <li className="nav-item">
-                <Link to={`/dashboard/userProfile`} className="nav-link active" aria-current="page" href="#">My Account</Link>
-              </li>
+              {
+                user.email ? <li className="nav-item">
+                  <Link to={`/dashboard/userProfile`} className="nav-link active" aria-current="page" href="#">My Account</Link>
+                </li> : ''
+              }
             </ul>
             <form class="">
               <div className="sign-in d-flex align-items-center ">
