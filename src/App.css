@@ -38,7 +38,7 @@ nav{
     color: rgb(197, 53, 53) !important;
     border-bottom: 2px solid rgb(220, 20, 60);
 } 
-.sign-in p{
+.sign-in  p{
     display: inline-block;
     color:rgb(243, 70, 104);
     font-weight:600;

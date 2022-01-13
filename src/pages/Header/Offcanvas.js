@@ -27,7 +27,7 @@ const Sidenav = ({ show, setShow, searchRef, handleSearch, value, logOut }) => {
                         <hr />
                         <p onClick={handleClose} className='my-0 py-0 text-center'>{user.email ? <> {user.photoURL ? <img width='30px' style={{ borderRadius: '50%' }} src={user.photoURL} alt="" /> : <span className='fw-bold text-dark'>{user.displayName}</span>}  </> : ' '} </p>
                         <Link to='/home'>
-                            <div className='d-flex w-100 align-items-center justify-content-center link-item'>
+                            <div onClick={handleClose} className='d-flex w-100 align-items-center justify-content-center link-item'>
                                 <p>Home </p>
                             </div>
                         </Link>
