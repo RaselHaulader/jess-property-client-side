@@ -13,6 +13,7 @@ const AllPropertyPage = () => {
     const [items, setItems] = useState([])
     const [filterData, setFilterData] = useState({ priceRange: [0, 10000000] })
     const [rangeValue, setRangeValue] = useState([0, 10000000])
+    const [loading, setLoading] = useState(true)
     const categoryRef = useRef()
     const locationRef = useRef()
     const typeRef = useRef()
@@ -34,11 +35,12 @@ const AllPropertyPage = () => {
     }
     // search data by filtered criteria
     useEffect(() => {
-
+        setLoading(true)
         axios.post('https://secret-basin-56489.herokuapp.com/filter', filterData)
             .then(res => {
                 console.log(res.data);
                 setItems(res.data)
+                setLoading(false)
             })
     }, [filterData])
     return (
@@ -103,20 +105,21 @@ const AllPropertyPage = () => {
                     <div>
                         <p className='my-1 py-0'>Home &gt; <span className='text-danger'> Property List</span></p>
                     </div>
-                    <h3 className='my-3 fw-bolder'>Property For sell</h3>
+                    <h3 className='my-3 fw-bolder'>Property {categoryRef?.current?.value ? categoryRef?.current?.value : ' For sell'}</h3>
                     <div>
                         <div>
                             <label className='text-secondary' htmlFor="">Sort by :</label> <select>
                                 <option>Newest</option>
-                                <option>Oldest</option>
+                               
                             </select>
                         </div>
                     </div>
-                    {items.length === 0 && <h5 className='text-center my-5 text-danger'>No Result Found</h5>}
+                
+                    {items.length === 0 && !loading && <h5 className='text-center my-5 text-danger'>No Result Found</h5>}
+                    {loading ? <h5 className='text-center my-5 text-danger'>Loading...</h5> :    
                     <div className='allPropertyPageProperties mt-3'>
-
                         {items.map(item => <AllPropertyItem key={item._id} items={item} />)}
-                    </div>
+                    </div>}
                 </div>
             </div>
             <Footer></Footer>
