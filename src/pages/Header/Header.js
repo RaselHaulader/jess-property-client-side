@@ -12,6 +12,7 @@ import { useRef } from 'react';
 import Sidenav from './Offcanvas';
 const Header = () => {
   const searchRef = useRef()
+  const searchRef2 = useRef()
   const { logOut } = useAuth()
   const user = useSelector(state => state.user.userAuth)
   const admin = useSelector(state => state.user.admin)
@@ -40,11 +41,13 @@ const Header = () => {
   }
   // search func
   const dispatch = useDispatch()
-  const handleSearch = () => {
+  const handleSearch = (type) => {
     console.log('test');
     navigate('/search');
-    dispatch(addProperty(searchRef.current.value))
+    type === 'header' && dispatch(addProperty(searchRef.current.value))
+    type === 'canvas' && dispatch(addProperty(searchRef2.current.value))
   }
+  
   return (
     <>
       <div className="navbar-container" style={colorChange ? setNavBg : setNavBg2}>
@@ -83,7 +86,7 @@ const Header = () => {
                   <p className='my-0 py-0'>{user.email ? <> {user.photoURL ? <img width='30px' style={{ borderRadius: '50%' }} src={user.photoURL} alt="" /> : <span className='fw-bold text-dark'>{user.displayName}</span>}  </> : ' '} </p>
                   <li className='nav-item searchBar'>
                     <i class="fas fa-search"></i>
-                    <input ref={searchRef} onChange={handleSearch} value={value} placeholder='search' type="text" />
+                    <input ref={searchRef} onChange={()=>handleSearch('header')} value={value} placeholder='search' type="text" />
                   </li>
                   <Link to='/addProperty' className='me-2'> <span style={{ fontSsize: "20px" }} >+</span> Add Property</Link>
                   {user.email ? <p className='my-0 py-0'> <span style={{ cursor: 'pointer' }} onClick={() => logOut()}> <i className="fas fa-sign-out-alt"></i></span></p> : <Link to='/login'> <i className="fas fa-sign-in-alt"></i> Sign in</Link>}
@@ -97,7 +100,7 @@ const Header = () => {
         show={show}
         setShow={setShow}
         handleShow={handleShow}
-        searchRef={searchRef}
+        searchRef={searchRef2}
         handleSearch={handleSearch}
         logOut={logOut}
         />

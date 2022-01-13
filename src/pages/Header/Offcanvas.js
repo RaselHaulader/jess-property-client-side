@@ -58,7 +58,7 @@ const Sidenav = ({ show, setShow, searchRef, handleSearch, value, logOut }) => {
                         </Link>}
                         <li className='nav-item searchBar mx-auto'>
                             <i class="fas fa-search"></i>
-                            <input ref={searchRef} onChange={handleSearch} value={value} placeholder='search' type="text" />
+                            <input ref={searchRef} onChange={()=>handleSearch('canvas')} value={value} placeholder='search' type="text" />
                         </li>
                     </div>
                 </Offcanvas.Body>
