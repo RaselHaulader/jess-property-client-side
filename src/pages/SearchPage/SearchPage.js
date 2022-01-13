@@ -31,7 +31,7 @@ const SearchPage = () => {
     return (
         <div className='pt-5'>
             <div className='mt-5'>
-                {load ? <h3 className='text-center'>Searching...</h3> :
+                {load ? <h4 className='text-center text-danger'>Searching...</h4> :
                     <div className='propertiesResults px-4'>
                         {properties.map(item => <AllPropertyItem key={item._id} items={item} />)}
                     </div>}
