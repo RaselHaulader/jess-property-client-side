@@ -8,12 +8,9 @@
     border-bottom: 1px solid rgba(145, 142, 142, 0.534);
     max-width: 400px;
     margin: auto;
+    font-size: 20px;
     padding: 5px 0;
-    font-size: 16px;
     color: gray;
     font-weight: 500;
     margin-bottom: 10px;
-}
-.profile-container p span{
-    width: 100px;
 }

@@ -1,0 +1,6 @@
+.notFound{
+    background-image: url('../../images/giphy.gif');
+    background-size: cover;
+    background-position: top;
+    height: 100vh;
+}

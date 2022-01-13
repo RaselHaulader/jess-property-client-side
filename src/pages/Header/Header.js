@@ -65,9 +65,9 @@ const Header = () => {
               <li className="nav-item">
                 <HashLink smooth to="/home#recent" className="nav-link active" aria-current="page">Recent</HashLink>
               </li>
-              {user.email && <li className="nav-item">
-                <Link to={`/dashboard/${admin ? 'users' : 'userPost'}`} className="nav-link active" aria-current="page" href="#">My Account</Link>
-              </li>}
+             <li className="nav-item">
+                <Link to={`/dashboard/userProfile`} className="nav-link active" aria-current="page" href="#">My Account</Link>
+              </li>
             </ul>
             <form class="">
               <div className="sign-in d-flex align-items-center ">
