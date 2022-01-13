@@ -14,7 +14,7 @@ const Dashboard = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        window.scroll(0,0)
+        window.scroll(0, 0)
         axios(`https://secret-basin-56489.herokuapp.com/checkUsers/${user.email}`)
             .then(res => {
                 console.log(res)
@@ -26,25 +26,26 @@ const Dashboard = () => {
                     dispatch(handleAdmin(false))
                 }
             })
-    },[user])
+    }, [user])
     return (
         <div>
             <div className='container pt-5'>
-               
+
                 <div className='p-3 mt-5'>
                     <div className='dashboardContainer row'>
                         <div className='col-12 col-md-3 link-container'>
                             <h5 className='fw-bold mb-4' style={{ color: 'crimson' }}>My Account</h5>
                             <hr />
+                                    <Link to='/dashboard/userProfile' onClick={() => setTile('My Profile')}>
+                                        <div className='d-flex align-items-center justify-content-between link-item'>
+                                            <p>My Profile </p>
+                                            <i className="fas fa-long-arrow-alt-right"></i>
+                                        </div>
+                                    </Link>
                             {
 
-                                load === 'user' && <div className=''>
-                                    {/* <Link to='/dashboard/userProfile'  onClick={()=>setTile('My Profile')}>
-                                    <div className='d-flex align-items-center justify-content-between link-item'>
-                                        <p>My Profile </p>
-                                        <i className="fas fa-long-arrow-alt-right"></i>
-                                    </div>
-                                </Link> */}
+                                load === 'user' && 
+                                <div className=''>
                                     <Link to='/dashboard/userPost' onClick={() => setTile('My Post ')}>
                                         <div className='d-flex align-items-center justify-content-between link-item'>
                                             <p>My Post </p>
