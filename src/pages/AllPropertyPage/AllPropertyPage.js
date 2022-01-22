@@ -43,6 +43,7 @@ const AllPropertyPage = () => {
             data = { ...data, ...bannerFilterData }
         }
         console.log(bannerFilterData)
+        console.log(data)
         console.log('hello');
         fetchResult(data)
 
@@ -57,7 +58,6 @@ const AllPropertyPage = () => {
                 console.log(res.data);
                 setItems(res.data)
                 setLoading(false)
-
             })
     }
 
