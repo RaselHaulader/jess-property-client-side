@@ -3,47 +3,64 @@ import AllPropertyItem from '../AllProperties/AllPropertyItem';
 import './AllPropertyPageStyle.css'
 import axios from 'axios';
 import Footer from '../Footer/Footer';
-import { useSearchParams } from 'react-router-dom';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFilterValue } from '../../redux/slices/propertySlice';
 const { Range } = Slider;
+
 const AllPropertyPage = () => {
-
-
     const [items, setItems] = useState([])
-    const [filterData, setFilterData] = useState({ priceRange: [0, 10000000] })
+    // const [filterData, setFilterData] = useState({ priceRange: [0, 10000000] })
     const [rangeValue, setRangeValue] = useState([0, 10000000])
     const [loading, setLoading] = useState(true)
     const categoryRef = useRef()
     const locationRef = useRef()
     const typeRef = useRef()
-
+    const bannerFilterData = useSelector(state => state.properties.filterData)
+    const dispatch = useDispatch()
     // range value
     const log = (e) => {
         setRangeValue([e[0] * 100000, e[1] * 100000]);
     }
+
+
     // send filter type to db
     const handleFilter = () => {
+        dispatch(addFilterValue({}))
         const selectedFilterData = {
             priceRange: [...rangeValue]
         }
         categoryRef.current.value !== '' && (selectedFilterData.category = categoryRef.current.value)
         locationRef.current.value !== '' && (selectedFilterData.district = locationRef.current.value)
         typeRef.current.value !== '' && (selectedFilterData.PropertyType = typeRef.current.value)
-        console.log(selectedFilterData);
-        setFilterData(selectedFilterData);
+        fetchResult(selectedFilterData)
     }
-    // search data by filtered criteria
     useEffect(() => {
-        window.scroll(0,0)
+        console.log('hello1');
+        let data = { priceRange: [...rangeValue] };
+        if (bannerFilterData.PropertyType || bannerFilterData.district || bannerFilterData.PropertyType) {
+            data = { ...data, ...bannerFilterData }
+        }
+        console.log(bannerFilterData)
+        console.log('hello');
+        fetchResult(data)
+
+    }, [])
+    // search data by filtered criteria
+    const fetchResult = (filterData) => {
+        window.scroll(0, 0)
+        console.log(filterData);
         setLoading(true)
         axios.post('https://secret-basin-56489.herokuapp.com/filter', filterData)
             .then(res => {
                 console.log(res.data);
                 setItems(res.data)
                 setLoading(false)
+
             })
-    }, [filterData])
+    }
+
     return (
         <div className='pt-5' style={{ maxWidth: '1200px', margin: 'auto' }}>
 
@@ -63,7 +80,7 @@ const AllPropertyPage = () => {
                         <div>
                             <label htmlFor="">Location</label><br />
                             <select onChange={handleFilter} ref={locationRef} className='w-100'>
-                                <option value="">All Location</option>
+                                <option value="">{bannerFilterData.district ? bannerFilterData.district : 'All Location'}</option>
                                 <option value="Jashore">Jashore</option>
                                 <option value="Khulna">Khulna</option>
                                 <option value="Jhenidah">Jhenidah</option>
@@ -78,7 +95,7 @@ const AllPropertyPage = () => {
                     <div>
                         <label htmlFor="">Property Type </label><br />
                         <select onChange={handleFilter} ref={typeRef} className='w-100'>
-                            <option value="">All Type</option>
+                        <option value="">{bannerFilterData.PropertyType ? bannerFilterData.PropertyType : 'All type'}</option>
                             <option value="Apartment">Apartment</option>
                             <option value="Home">Home</option>
                             <option value="Land">Land</option>
@@ -106,21 +123,21 @@ const AllPropertyPage = () => {
                     <div>
                         <p className='my-1 py-0'>Home &gt; <span className='text-danger'> Property List</span></p>
                     </div>
-                    <h3 className='my-3 fw-bolder'>Property {categoryRef?.current?.value ? categoryRef?.current?.value : ' For sell'}</h3>
+                    <h3 className='my-3 fw-bolder'>Properties {categoryRef?.current?.value ? categoryRef?.current?.value : ' '}</h3>
                     <div>
                         <div>
                             <label className='text-secondary' htmlFor="">Sort by :</label> <select>
                                 <option>Newest</option>
-                               
+
                             </select>
                         </div>
                     </div>
-                
+
                     {items.length === 0 && !loading && <h5 className='text-center my-5 text-danger'>No Result Found</h5>}
-                    {loading ? <h5 className='text-center my-5 text-danger'>Loading...</h5> :    
-                    <div className='allPropertyPageProperties mt-3'>
-                        {items.map(item => <AllPropertyItem key={item._id} items={item} />)}
-                    </div>}
+                    {loading ? <h5 className='text-center my-5 text-danger'>Loading...</h5> :
+                        <div className='allPropertyPageProperties mt-3'>
+                            {items.map(item => <AllPropertyItem key={item._id} items={item} />)}
+                        </div>}
                 </div>
             </div>
             <Footer></Footer>

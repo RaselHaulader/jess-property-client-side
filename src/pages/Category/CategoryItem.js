@@ -1,16 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { addFilterValue } from '../../redux/slices/propertySlice';
 
 const CategoryItem = ({ name, icon }) => {
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleCategory = (category) => {
+        dispatch(addFilterValue({ PropertyType: category }))
+        navigate('/allProperty')
+    }
     return (
-        <Link to='/allProperty' className='text-secondary text-decoration-none'>
+        <div onClick={()=>handleCategory(name)} className='text-secondary text-decoration-none'>
             <div>
                 <div className="catagory-item">
                     <i className={icon}></i>
                     <h4>{name}</h4>
                 </div>
             </div>
-        </Link>
+        </div>
     );
 };
 

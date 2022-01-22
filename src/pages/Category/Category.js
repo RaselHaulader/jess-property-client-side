@@ -8,7 +8,7 @@ const Category = () => {
             <div  className='catagory-body'>
                 <CategoryItem name="Home" icon="fas fa-home" />
                 <CategoryItem name="Apartment" icon="far fa-building" />
-                <CategoryItem name="Lands" icon="fab fa-accusoft" />
+                <CategoryItem name="Land" icon="fab fa-accusoft" />
                 <CategoryItem name="Office" icon="fas fa-home" />
                 <CategoryItem name="Shop" icon="fas fa-home" />
                 <CategoryItem name="Commercial" icon="fas fa-home" />

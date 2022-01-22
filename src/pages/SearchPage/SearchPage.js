@@ -9,7 +9,7 @@ import './SearchPage.css';
 const SearchPage = () => {
     const [properties, setProperties] = useState([])
     const [load, setLoad] = useState(false)
-    const searchKeyword = useSelector(state => state.properties.searchProperties)
+    const searchKeyword = useSelector(state => state.properties.searchedProperties)
 
     const dispatch = useDispatch()
     useEffect(() => {
