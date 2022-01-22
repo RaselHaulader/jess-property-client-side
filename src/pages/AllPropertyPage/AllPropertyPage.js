@@ -135,7 +135,7 @@ const AllPropertyPage = () => {
 
                     {items.length === 0 && !loading && <h5 className='text-center my-5 text-danger'>No Result Found</h5>}
                     {loading ? <h5 className='text-center my-5 text-danger'>Loading...</h5> :
-                        <div className='allPropertyPageProperties mt-3'>
+                        <div className='allPropertyPageProperties mt-3 mb-5'>
                             {items.map(item => <AllPropertyItem key={item._id} items={item} />)}
                         </div>}
                 </div>

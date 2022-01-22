@@ -77,7 +77,7 @@ const Header = () => {
                 </li>
                 {
                   user.email ? <li className="nav-item">
-                    <Link to={`/dashboard/userProfile`} className="nav-link active" aria-current="page" href="#">My Account</Link>
+                    <Link to={`/dashboard/userProfile`} className="nav-link active" aria-current="page" href="#">Account</Link>
                   </li> : ''
                 }
               </ul>

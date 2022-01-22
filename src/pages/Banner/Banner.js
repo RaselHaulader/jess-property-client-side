@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFilterValue } from '../../redux/slices/propertySlice';
-import { useState } from 'react';
+import Typewriter from 'typewriter-effect';
 const Banner = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -27,8 +27,29 @@ const Banner = () => {
                 </div>
                 <div className='row h-100 pb-5 align-items-center p-0 m-0'>
                     <div className='col-12 col-md-6 text-white ps-5'>
-                        <h1>Find Your <br /> Dream Property </h1>
-                        <p>Make your life easy and beautiful by</p>
+                        <div>
+                            <h1 className='bannerInfo'>
+                                <Typewriter
+                                    onInit={(typewriter) => {
+                                        typewriter.typeString('Welcome <br/> to <span style="color:tomato;"> Property Bazar.</span> ')
+                                            .pauseFor(100)
+                                            .typeString('<span ><br/> Are you finding a place to sell</span>')
+                                            .pauseFor(500)
+                                            .deleteChars(7)
+                                            .typeString('<span > or buy a property?  </span>')
+                                            .pauseFor(200)
+                                            .typeString('<span> Than  You are in correct place.<br/> Thank You </span>')
+                                            .deleteAll(7)
+                                            .start();
+                                    }}
+                                    options={{
+                                        autoStart: true,
+                                        loop: true,
+                                        delay: 95,
+                                    }}
+                                />
+                            </h1>
+                        </div>
                     </div>
                     <div className='col-12 col-md-6'>
                         <div className='input-container w-75 mx-auto p-5'>

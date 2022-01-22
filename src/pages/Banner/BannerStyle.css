@@ -2,6 +2,7 @@
     background-color: aqua;
     background-position: center;
     background-size: cover;
+    min-height:100%;
 }
 
 .banner-input-container{
@@ -16,4 +17,16 @@
 
 .banner-details{
      border-right:3px solid rgba(150, 150, 150, 0.397);
+}
+.bannerInfo{
+    font-size: 50px !important;
+}
+@media  screen and (max-width:500px) {
+    
+    .bannerInfo{
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        font-size: 20px !important;
+    }
 }
