@@ -2,7 +2,7 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      margin-bottom: 50px;
+      margin-bottom: 30px;
 }
 .profile-container p{
     max-width: 400px;
@@ -15,4 +15,11 @@
     border-radius: 20px;
     padding: 10px;
     border: 1px solid rgba(128, 128, 128, 0.267);
+}
+.verify{
+    font-size: 12px;
+    font-weight: 900;
+    border: 1px solid rgba(190, 182, 182, 0.404);
+    padding: 3px;
+    border-radius: 5px;
 }

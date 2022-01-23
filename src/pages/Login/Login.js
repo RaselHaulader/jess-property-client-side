@@ -8,9 +8,9 @@ import { useDispatch } from 'react-redux';
 import { addUserAuth } from '../../redux/slices/userSlices';
 import axios from 'axios';
 const Login = () => {
-    const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState('login')
     // firebase auth
-    const { googleSignIn, updateProfile, auth, createAccount, emailLogin } = useAuth()
+    const { googleSignIn, resetPassword, updateProfile, auth, createAccount, emailLogin } = useAuth()
     // react form hook
     const { register, reset, handleSubmit, formState: { errors } } = useForm();
     // react router
@@ -21,8 +21,8 @@ const Login = () => {
     const dispatch = useDispatch()
 
     // toggle login and register
-    const handleToggle = () => {
-        toggle ? setToggle(false) : setToggle(true)
+    const handleToggle = (type) => {
+        setToggle(type)
     }
 
     //save user data to db
@@ -76,7 +76,7 @@ const Login = () => {
                     saveUserInfo({ name: name, email: email })
                     // store in redux
                     dispatch(addUserAuth(user))
-                    setToggle(false)
+                    setToggle('login')
                 }).catch((error) => {
                     window.alert(error.message)
                 })
@@ -85,9 +85,28 @@ const Login = () => {
                 console.log(error.message);
             });
     }
+
+    // password reset 
+    const handlePasswordReset = (email) => {
+        resetPassword(email).then(() => {
+                // Password reset email sent!
+                // ..
+                window.alert('Check Your Email to Reset Your Password')
+                handleToggle('login')
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                window.alert(error.message)
+
+                // ..
+            });
+    }
     // handle submit
     const onSubmit = data => {
-        if (toggle) {
+        console.log(data);
+        console.log(toggle);
+        if (toggle === 'create') {
             //create account
             if (data.password == data.ConfirmPassword) {
                 handleCreateAccount(data.email, data.password, data.name)
@@ -95,22 +114,24 @@ const Login = () => {
                 console.log('pass not matched');
             }
             console.log('create', data);
-        } else {
+        } else if (toggle === 'login') {
             // login
             console.log('login ', data);
             handleEmailSignIn(data.email, data.password)
+        } else if (toggle === 'reset'){
+            handlePasswordReset(data.email)
         }
-        // reset()
+        reset()
     };
     return (
         <div className='container pt-5'>
-         
+
             <h3 className='text-center mt-5'>Login</h3>
             <div>
                 <form className='form-body d-flex flex-column align-items-center' onSubmit={handleSubmit(onSubmit)}>
 
                     {
-                        toggle ? <>
+                        toggle === 'create' ? <>
                             <input placeholder='Name' {...register("name", { required: true })} />
                             {errors.name && <span className='text-primary'>This field is required</span>}
                         </> : ''
@@ -119,11 +140,14 @@ const Login = () => {
                     <input placeholder='Email' {...register("email", { required: true })} />
                     {errors.email && <span className='text-primary'>This field is required</span>}
 
-                    <input placeholder='Password' {...register("password", { required: true })} />
-                    {errors.password && <span className='text-primary'>This field is required</span>}
+                    {toggle !== 'reset' && <>
+                        <input placeholder='Password' {...register("password", { required: true })} />
+                        {errors.password && <span className='text-primary'>This field is required</span>}
+                    </>
 
+                    }
                     {
-                        toggle ? <>
+                        toggle === 'create' ? <>
                             <input placeholder='Confirm Password' {...register("ConfirmPassword", { required: true })} />
                             {errors.ConfirmPassword && <span className='text-primary'>This field is required</span>}
                         </> : ''
@@ -133,7 +157,12 @@ const Login = () => {
                 </form>
                 <div className='text-center'>
                     <small className='text-center mb-0'> Sign in with <span style={{ cursor: 'pointer' }} onClick={handleGoogleSignIn} className='text-danger'>google</span></small>
-                    <small className='text-center m-0 p-0'> or {toggle ? 'login with' : 'create a'} <span onClick={handleToggle} style={{ cursor: 'pointer' }} className='text-danger'>{toggle ? 'email' : 'new account'}</span></small>
+                    <small className='text-center m-0 p-0'> or
+                        {(toggle === 'login' || toggle === 'reset') && <span> <span onClick={() => handleToggle('create')} className='text-danger' style={{ cursor: 'pointer' }}> create </span> an account</span>}
+                        {toggle === 'create' && <span> <span onClick={() => handleToggle('login')} className='text-danger' style={{ cursor: 'pointer' }}> Login </span> with Email</span>}
+                         
+                    </small><br />
+                    <small className=''><span onClick={() => handleToggle('reset')} style={{ cursor: 'pointer' }} className='text-danger'>Forget Password?</span> click to reset</small>
                 </div>
 
             </div>
