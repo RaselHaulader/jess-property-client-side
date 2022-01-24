@@ -28,7 +28,7 @@ const Footer = () => {
                     <h5 className="mb-4">Contact with us</h5>
                 <div className="row w-100 mx-auto ">
                     <div className="col-12 p-3 call-number  ps-3 d-flex justify-content-center flex-column">
-                        <h6 className="p-0 fw-bolder m-0"> Call us: +008 98 3445 54</h6>
+                        <h6 className="p-0 fw-bolder m-0"> Call us: +008 98 3445 540</h6>
                         <h6 className="my-2 fw-bold">Email: contact@info.com</h6>
                     </div>
                 </div>
