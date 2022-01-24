@@ -31,7 +31,7 @@ const Banner = () => {
 
                             <h1 className='bannerInfo'>
                                 Welcome <br />  To 
-                                <span className='text-danger'> Property Bazar</span>
+                                <span className='text-danger'> Property Bajar</span>
                             </h1>
                             <h3>
                                 <Typewriter
