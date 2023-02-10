@@ -32,7 +32,7 @@ const Banner = () => {
 
                             <h1 className='bannerInfo'>
                                 Welcome <br />  To 
-                                <span className='text-danger'> Property Bar</span>
+                                <span className='text-danger'> Property Bazar</span>
                             </h1>
                             <h3 style={{minHeight:'80px'}}>
                                 <Typewriter
