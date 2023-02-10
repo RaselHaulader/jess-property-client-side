@@ -48,12 +48,18 @@ const AllPropertyPage = () => {
         fetchResult(data)
 
     }, [])
+
+    useEffect(() => {
+        window.addEventListener('storage', () => {
+            window.alert('tetz')
+        });
+    }, [])
     // search data by filtered criteria
     const fetchResult = (filterData) => {
         window.scroll(0, 0)
         console.log(filterData);
         setLoading(true)
-        axios.post('https://secret-basin-56489.herokuapp.com/filter', filterData)
+        axios.post('https://property-bazar-server.onrender.com/filter', filterData)
             .then(res => {
                 console.log(res.data);
                 setItems(res.data)
@@ -95,7 +101,7 @@ const AllPropertyPage = () => {
                     <div>
                         <label htmlFor="">Property Type </label><br />
                         <select onChange={handleFilter} ref={typeRef} className='w-100'>
-                        <option value="">{bannerFilterData.PropertyType ? bannerFilterData.PropertyType : 'All type'}</option>
+                            <option value="">{bannerFilterData.PropertyType ? bannerFilterData.PropertyType : 'All type'}</option>
                             <option value="Apartment">Apartment</option>
                             <option value="Home">Home</option>
                             <option value="Land">Land</option>

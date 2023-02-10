@@ -7,9 +7,9 @@ const AddProperty = () => {
 
     // user from redux store
     const user = useSelector(state => state.user.userAuth)
-    useEffect(()=>{
-        window.scroll(0,0)
-    },[])
+    useEffect(() => {
+        window.scroll(0, 0)
+    }, [])
     // handle submit
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -24,7 +24,7 @@ const AddProperty = () => {
                 propertiesDetails[e.target[i].name] = e.target[i].value
             }
         }
-        axios.post('https://secret-basin-56489.herokuapp.com/post', propertiesDetails)
+        axios.post('https://property-bazar-server.onrender.com/post', propertiesDetails)
             .then(res => {
                 if (res.data.acknowledged) {
                     window.alert('Success')

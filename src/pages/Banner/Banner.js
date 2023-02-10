@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { addFilterValue } from '../../redux/slices/propertySlice';
 import Typewriter from 'typewriter-effect';
+import { Link } from 'react-router-dom';
 const Banner = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -33,7 +34,7 @@ const Banner = () => {
                                 Welcome <br />  To 
                                 <span className='text-danger'> Property Bar</span>
                             </h1>
-                            <h3>
+                            <h3 style={{minHeight:'80px'}}>
                                 <Typewriter
                                     onInit={(typewriter) => {
                                         typewriter.typeString('<span > Are you finding a place to sell</span>')
@@ -52,6 +53,9 @@ const Banner = () => {
                                     }}
                                 />
                             </h3>
+                        </div>
+                        <div className='sign-in mt-4 '>
+                          <Link to='/allProperty' className='px-5 py-2'>Explore</Link>
                         </div>
                     </div>
                     <div className='col-12 col-md-6'>

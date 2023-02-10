@@ -12,7 +12,7 @@ const UserRequest = () => {
   const user = useSelector(state => state.user.userAuth)
   useEffect(() => {
     dispatch(handleLoading2(true))
-    axios.get(`https://secret-basin-56489.herokuapp.com/getMsg/${user.email}`)
+    axios.get(`https://property-bazar-server.onrender.com/getMsg/${user.email}`)
       .then(res => {
         setMassage(res.data)
         dispatch(handleLoading2(false))
@@ -21,7 +21,7 @@ const UserRequest = () => {
 
   const deleteMassage = (id) => {
     if (window.confirm('Sure?')) {
-      axios.post('https://secret-basin-56489.herokuapp.com/deleteMsg', { id })
+      axios.post('https://property-bazar-server.onrender.com/deleteMsg', { id })
         .then(res => {
           if (res.data.deletedCount > 0) {
             const restMassage = massages.filter(massage => massage._id !== id)

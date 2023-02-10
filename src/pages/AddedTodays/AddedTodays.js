@@ -8,7 +8,7 @@ const AddedTodays = () => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        axios('https://secret-basin-56489.herokuapp.com/allProperties3')
+        axios('https://property-bazar-server.onrender.com/allProperties3')
             .then(res => {
                 setItems(res.data)
             })
@@ -25,10 +25,10 @@ const AddedTodays = () => {
                 </div>
                 <div className='col-12 col-md-6'>
                     <div className='mb-4'>
-                        <AddedTodaysItems items={items[1]}  />
+                        <AddedTodaysItems items={items[1]} />
                     </div>
                     <div>
-                        <AddedTodaysItems items={items[2]}  />
+                        <AddedTodaysItems items={items[2]} />
                     </div>
                 </div>
 

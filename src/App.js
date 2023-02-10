@@ -38,7 +38,7 @@ function App() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.user.userAuth)
   useEffect(() => {
-    axios(`https://secret-basin-56489.herokuapp.com/checkUsers/${user.email}`)
+    axios(`https://property-bazar-server.onrender.com/checkUsers/${user.email}`)
       .then(res => {
         console.log(res)
         if (res.data[0]?.role === 'admin') {
@@ -48,7 +48,7 @@ function App() {
         }
       })
   }, [user])
-  
+
 
   return (
     <BrowserRouter>

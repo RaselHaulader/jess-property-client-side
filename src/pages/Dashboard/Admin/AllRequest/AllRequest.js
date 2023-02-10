@@ -6,47 +6,47 @@ import AllPropertyItem from '../../../AllProperties/AllPropertyItem';
 import AllRequestItem from './AllRequestItem';
 
 const AllRequest = () => {
-    const [massages, setMassage] = useState([])
-    const loading = useSelector(state => state.user.loading2)
-    const dispatch = useDispatch()
-    const user = useSelector(state => state.user.userAuth)
-    useEffect(() => {
-      dispatch(handleLoading2(true))
-      axios.get(`https://secret-basin-56489.herokuapp.com/getAllMsg`)
+  const [massages, setMassage] = useState([])
+  const loading = useSelector(state => state.user.loading2)
+  const dispatch = useDispatch()
+  const user = useSelector(state => state.user.userAuth)
+  useEffect(() => {
+    dispatch(handleLoading2(true))
+    axios.get(`https://property-bazar-server.onrender.com/getAllMsg`)
+      .then(res => {
+        setMassage(res.data)
+        dispatch(handleLoading2(false))
+      })
+  }, [])
+
+  const deleteMassage = (id) => {
+    if (window.confirm('Sure?')) {
+      axios.post('https://property-bazar-server.onrender.com/deleteMsg', { id })
         .then(res => {
-          setMassage(res.data)
-          dispatch(handleLoading2(false))
+          if (res.data.deletedCount > 0) {
+            const restMassage = massages.filter(massage => massage._id !== id)
+            setMassage(restMassage)
+          }
         })
-    }, [])
-  
-    const deleteMassage = (id) => {
-      if (window.confirm('Sure?')) {
-        axios.post('https://secret-basin-56489.herokuapp.com/deleteMsg', { id })
-          .then(res => {
-            if (res.data.deletedCount > 0) {
-              const restMassage = massages.filter(massage => massage._id !== id)
-              setMassage(restMassage)
-            }
-          })
-      }
     }
-    return (
-      <div className='row w-100'>
-        {
-          !loading && massages.length === 0 && <h3 className='text-center'>You Have No massages</h3>
-        }
-        {
-          loading ?
-            <div class="text-center text-primary">
-              <div class="spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-            </div> :
-            massages.map((massage) => <AllRequestItem deleteMassage={deleteMassage} item={massage}></AllRequestItem>)
-        }
-  
-      </div>
-    );
-  };
+  }
+  return (
+    <div className='row w-100'>
+      {
+        !loading && massages.length === 0 && <h3 className='text-center'>You Have No massages</h3>
+      }
+      {
+        loading ?
+          <div class="text-center text-primary">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div> :
+          massages.map((massage) => <AllRequestItem deleteMassage={deleteMassage} item={massage}></AllRequestItem>)
+      }
+
+    </div>
+  );
+};
 
 export default AllRequest;

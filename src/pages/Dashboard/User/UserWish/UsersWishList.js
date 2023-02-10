@@ -11,7 +11,7 @@ const UsersWishList = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(handleLoading2(false))
-        axios.get(`https://secret-basin-56489.herokuapp.com/getWish/${user.email}`)
+        axios.get(`https://property-bazar-server.onrender.com/getWish/${user.email}`)
             .then(res => {
                 setWish(res.data)
                 dispatch(handleLoading2(true))
@@ -20,7 +20,7 @@ const UsersWishList = () => {
 
     const deleteWish = (id) => {
         if (window.confirm('Sure?')) {
-            axios.post('https://secret-basin-56489.herokuapp.com/deleteWish', { id })
+            axios.post('https://property-bazar-server.onrender.com/deleteWish', { id })
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const restWish = wishes.filter(wish => wish._id !== id)

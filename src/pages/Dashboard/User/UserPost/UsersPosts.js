@@ -13,7 +13,7 @@ const UsersPosts = () => {
     // get users post
     useEffect(() => {
         dispatch(handleLoading2(true))
-        axios.get(`https://secret-basin-56489.herokuapp.com/userPosts/${user.email}`)
+        axios.get(`https://property-bazar-server.onrender.com/userPosts/${user.email}`)
             .then(res => {
                 setPost(res.data)
                 console.log(res.data)
@@ -23,7 +23,7 @@ const UsersPosts = () => {
 
     const deletePost = (id) => {
         if (window.confirm('Sure?')) {
-            axios.post('https://secret-basin-56489.herokuapp.com/deletePost', { id })
+            axios.post('https://property-bazar-server.onrender.com/deletePost', { id })
                 .then(res => {
                     if (res.data.deletedCount > 0) {
                         const restPost = items.filter(post => post._id !== id)
@@ -38,12 +38,12 @@ const UsersPosts = () => {
                 !loading && items.length === 0 && <h3 className='text-center'>You Have No Post</h3>
             }
             {
-                loading  &&
-                    <div class="text-center text-primary">
-                        <div class="spinner-border" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
+                loading &&
+                <div class="text-center text-primary">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
                     </div>
+                </div>
             }
             <div className='items-container'>
 

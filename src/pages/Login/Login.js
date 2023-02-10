@@ -27,7 +27,7 @@ const Login = () => {
 
     //save user data to db
     const saveUserInfo = (data) => {
-        axios.post('https://secret-basin-56489.herokuapp.com/saveUser', data)
+        axios.post('https://property-bazar-server.onrender.com/saveUser', data)
             .then(res => console.log(res))
     }
 
@@ -89,11 +89,11 @@ const Login = () => {
     // password reset 
     const handlePasswordReset = (email) => {
         resetPassword(email).then(() => {
-                // Password reset email sent!
-                // ..
-                window.alert('Check Your Email to Reset Your Password')
-                handleToggle('login')
-            })
+            // Password reset email sent!
+            // ..
+            window.alert('Check Your Email to Reset Your Password')
+            handleToggle('login')
+        })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
@@ -118,7 +118,7 @@ const Login = () => {
             // login
             console.log('login ', data);
             handleEmailSignIn(data.email, data.password)
-        } else if (toggle === 'reset'){
+        } else if (toggle === 'reset') {
             handlePasswordReset(data.email)
         }
         reset()
@@ -160,7 +160,7 @@ const Login = () => {
                     <small className='text-center m-0 p-0'> or
                         {(toggle === 'login' || toggle === 'reset') && <span> <span onClick={() => handleToggle('create')} className='text-danger' style={{ cursor: 'pointer' }}> create </span> an account</span>}
                         {toggle === 'create' && <span> <span onClick={() => handleToggle('login')} className='text-danger' style={{ cursor: 'pointer' }}> Login </span> with Email</span>}
-                         
+
                     </small><br />
                     <small className=''><span onClick={() => handleToggle('reset')} style={{ cursor: 'pointer' }} className='text-danger'>Forget Password?</span> click to reset</small>
                 </div>

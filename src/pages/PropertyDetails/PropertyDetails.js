@@ -11,8 +11,8 @@ const PropertyDetails = () => {
     const msgRef = useRef()
     const { id } = useParams()
     useEffect(() => {
-        window.scroll(0,0)
-        axios.get(`https://secret-basin-56489.herokuapp.com/selectedItem/${id}`)
+        window.scroll(0, 0)
+        axios.get(`https://property-bazar-server.onrender.com/selectedItem/${id}`)
             .then(res => {
                 setItem(res.data)
                 window.scrollTo({
@@ -32,32 +32,32 @@ const PropertyDetails = () => {
             category: item.category,
             PropertyType: item.PropertyType
         }
-        axios.post('https://secret-basin-56489.herokuapp.com/addWish', data)
+        axios.post('https://property-bazar-server.onrender.com/addWish', data)
             .then(res => {
                 if (res.data.acknowledged) {
                     window.alert('Success')
                 }
             })
     }
-    const handleMsg = () => {     
-       if (msgRef.current.value.length > 10) {
-        const data = {
-            message: msgRef.current.value,
-            from: user.email,
-            to: item.user,
-            postId : item._id,
-            propertyName : item.title,
-            time: new Date().toLocaleString()
+    const handleMsg = () => {
+        if (msgRef.current.value.length > 10) {
+            const data = {
+                message: msgRef.current.value,
+                from: user.email,
+                to: item.user,
+                postId: item._id,
+                propertyName: item.title,
+                time: new Date().toLocaleString()
+            }
+            axios.post('https://property-bazar-server.onrender.com/addMsg', data)
+                .then(res => {
+                    if (res.data.acknowledged) {
+                        window.alert('Success')
+                    }
+                })
+        } else if (msgRef.current.value.length < 10) {
+            window.alert('Massage should be minimum length 10 character')
         }
-        axios.post('https://secret-basin-56489.herokuapp.com/addMsg', data)
-            .then(res => {
-                if (res.data.acknowledged) {
-                    window.alert('Success')
-                }
-            })
-       } else if(msgRef.current.value.length < 10){
-        window.alert('Massage should be minimum length 10 character')
-       }
     }
     return (
         <div className='pt-5'>
